@@ -3,7 +3,8 @@
     <ng-template matTabContent>
       <div class="create-billing-container">
         <button mat-raised-button color="primary" routerLink="/billings-detail">
-          {{"billing.createBilling" | translate}}
+          <span class="space-button-text uppercase-text">{{"billing.createBilling" | translate}}</span>
+          <mat-icon svgIcon="add"></mat-icon>
         </button>
       </div>
     </ng-template>
