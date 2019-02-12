@@ -1,0 +1,11 @@
+{
+    "common" : {
+        "company" : "Empresa",
+        "companies" : "Empresas",
+        "document" : "Documento",
+        "documents" : "Documentos",
+        "preview" : "Vista previa",
+        "billings" : "Cuentas de cobro",
+        "billing" : "Cuenta de cobro"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "common" : {
+        "company" : "Company",
+        "companies" : "Companies",
+        "document" : "Document",
+        "documents" : "Documents",
+        "preview" : "Preview",
+        "billings" : "Billings",
+        "billing" : "Billing"
+    }
+}

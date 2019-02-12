@@ -3,12 +3,19 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './common/material.module';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { CompaniesComponent } from './companies/companies.component';
 import { BillingsComponent } from './billings/billings.component';
 import { DocumentsComponent } from './documents/documents.component';
+
+export function createTranslateLoader(http: HttpClient) {
+   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
    declarations: [
@@ -22,7 +29,15 @@ import { DocumentsComponent } from './documents/documents.component';
       BrowserModule,
       BrowserAnimationsModule,
       AppRoutingModule,
-      MaterialModule
+      MaterialModule,
+      HttpClientModule,
+      TranslateModule.forRoot({
+         loader: {
+             provide: TranslateLoader,
+             useFactory: (createTranslateLoader),
+             deps: [HttpClient]
+         }
+     })
    ],
    providers: [
       { provide: 'BASE_URL', useFactory: getBaseUrl }
