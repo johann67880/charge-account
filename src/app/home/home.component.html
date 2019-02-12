@@ -1,15 +1,19 @@
 <mat-tab-group>
-  <mat-tab label="Billings">
+  <mat-tab label="{{'common.billings' | translate}}">
     <ng-template matTabContent>
-      {{"common.billings" | translate}}
+      <div class="create-billing-container">
+        <button mat-raised-button color="primary" routerLink="/billings-detail">
+          {{"billing.createBilling" | translate}}
+        </button>
+      </div>
     </ng-template>
   </mat-tab>
-  <mat-tab label="Companies">
+  <mat-tab label="{{'common.companies' | translate}}">
     <ng-template matTabContent>
       {{"common.companies" | translate}}
     </ng-template>
   </mat-tab>
-  <mat-tab label="Documents">
+  <mat-tab label="{{'common.documents' | translate}}">
     <ng-template matTabContent>
       {{"common.documents" | translate}}
     </ng-template>

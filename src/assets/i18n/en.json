@@ -7,5 +7,10 @@
         "preview" : "Preview",
         "billings" : "Billings",
         "billing" : "Billing"
+    },
+    "billing" : {
+        "createBilling" : "Crear cuenta de cobro",
+        "newBilling" : "Nueva cuenta de cobro",
+        "editBilling" : "Editar cuenta de cobro"
     }
 }
