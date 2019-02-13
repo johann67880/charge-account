@@ -7,7 +7,11 @@
         "preview" : "Vista previa",
         "billings" : "Cuentas de cobro",
         "billing" : "Cuenta de cobro",
-        "detailProduct" : "Detalle productos"
+        "detailProduct" : "Detalle productos",
+        "next" : "Siguiente",
+        "back" : "Atrás",
+        "previous" : "Anterior",
+        "finish" : "Finalizar"
     },
     "billing" : {
         "createBilling" : "Crear cuenta de cobro",

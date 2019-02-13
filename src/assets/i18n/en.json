@@ -7,7 +7,11 @@
         "preview" : "Preview",
         "billings" : "Billings",
         "billing" : "Billing",
-        "detailProduct" : "Products detail"
+        "detailProduct" : "Products detail",
+        "next" : "Next",
+        "back" : "Back",
+        "previous" : "Previous",
+        "finish" : "Finish"
     },
     "billing" : {
         "createBilling" : "Crear cuenta de cobro",
