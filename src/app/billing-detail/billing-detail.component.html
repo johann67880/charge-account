@@ -2,3 +2,40 @@
   <mat-icon class="cursor-pointer" svgIcon="arrow-back" (click)="goBack()"></mat-icon>
   <span class="toolbar-title">{{'billing.newBilling' | translate}}</span>
 </mat-toolbar>
+
+<div>
+  <mat-horizontal-stepper>
+
+    <mat-step [completed]="false" label="{{'common.billing' | translate}}">
+      <p>Put table with billings</p>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+
+    <mat-step [completed]="false" label="{{'common.detailProduct' | translate}}">
+      <p>Products Detail.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+
+    <mat-step [completed]="false" label="{{'common.documents' | translate}}">
+      <p>Documents.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+
+    <mat-step [completed]="false" label="{{'common.preview' | translate}}">
+      <p>Preview.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+
+  </mat-horizontal-stepper>
+</div>

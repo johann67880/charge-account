@@ -6,7 +6,8 @@
         "documents" : "Documentos",
         "preview" : "Vista previa",
         "billings" : "Cuentas de cobro",
-        "billing" : "Cuenta de cobro"
+        "billing" : "Cuenta de cobro",
+        "detailProduct" : "Detalle productos"
     },
     "billing" : {
         "createBilling" : "Crear cuenta de cobro",
