@@ -13,3 +13,11 @@
 .mat-tab-label .mat-tab-label-content {
     text-transform: uppercase;
 }
+
+.company-container {
+    padding-top: 20px;
+}
+
+.document-container {
+    padding-top: 20px;
+}

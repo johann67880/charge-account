@@ -18,5 +18,6 @@ export class AppComponent {
 
     matIconRegistry.addSvgIcon('arrow-back', sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/arrow_back.svg'));
     matIconRegistry.addSvgIcon('add', sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/add.svg'));
+    matIconRegistry.addSvgIcon('file', sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/file.svg'));
   }
 }

@@ -1,4 +1,6 @@
 <mat-tab-group>
+
+  <!--billings-->
   <mat-tab label="{{'common.billings' | translate}}">
     <ng-template matTabContent>
       <div class="create-billing-container">
@@ -9,15 +11,23 @@
       </div>
     </ng-template>
   </mat-tab>
+
+  <!--companies-->
   <mat-tab label="{{'common.companies' | translate}}">
     <ng-template matTabContent>
-      <p>{{"common.companies" | translate}}</p>
-      <companies></companies>
+      <div class="company-container">
+        <companies></companies>
+      </div>
     </ng-template>
   </mat-tab>
+
+  <!--documents-->
   <mat-tab label="{{'common.documents' | translate}}">
     <ng-template matTabContent>
-      {{"common.documents" | translate}}
+      <div class="document-container">
+        <documents></documents>
+      </div>
     </ng-template>
   </mat-tab>
+
 </mat-tab-group>

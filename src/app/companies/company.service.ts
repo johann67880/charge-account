@@ -6,15 +6,15 @@ import { Company } from '../models/company.model';
 @Injectable()
 export class CompanyService {
     readonly apiEndPoint : string = AppSettings.API_URL + "/companies/";
+    
+    //TODO: remove this variable when API is tied to test or production environment
+    readonly apiKey : string = "?key=3d8443e0";
 
     readonly httpOptions = {
         headers: new HttpHeaders({
         'Content-Type':  'application/json'
         })
     };
-
-    //TODO: remove this variable when API is tied to test or production environment
-    readonly apiKey : string = "?key=3d8443e0";
 
     constructor(private http: HttpClient) { }
 

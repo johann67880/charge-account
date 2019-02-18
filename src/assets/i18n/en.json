@@ -16,7 +16,9 @@
         "name" : "Name",
         "email" : "Email",
         "address" : "Address",
-        "telephone" : "Telephone"
+        "telephone" : "Telephone",
+        "size" : "Size",
+        "uploadedDate" : "Uploaded Date"
     },
     "billing" : {
         "createBilling" : "Crear cuenta de cobro",
