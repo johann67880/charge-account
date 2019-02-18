@@ -11,7 +11,12 @@
         "next" : "Siguiente",
         "back" : "Atrás",
         "previous" : "Anterior",
-        "finish" : "Finalizar"
+        "finish" : "Finalizar",
+        "tin" : "Nit",
+        "name" : "Nombre",
+        "email" : "Correo",
+        "address" : "Dirección",
+        "telephone" : "Teléfono"
     },
     "billing" : {
         "createBilling" : "Crear cuenta de cobro",
