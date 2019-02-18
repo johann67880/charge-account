@@ -3,7 +3,23 @@
     <div>
       <mat-progress-bar *ngIf="isBusy" mode="indeterminate"></mat-progress-bar>
     </div>
-    <table mat-table [dataSource]="companies" matSort>
+    <table mat-table [dataSource]="documents" matSort>
+
+        <ng-container matColumnDef="Select">
+
+          <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="$event ? masterToggle() : null"
+                          [checked]="selection.hasValue() && isAllSelected()"
+                          [indeterminate]="selection.hasValue() && !isAllSelected()">
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <mat-checkbox (click)="$event.stopPropagation()"
+                          (change)="$event ? selection.toggle(row) : null"
+                          [checked]="selection.isSelected(row)">
+            </mat-checkbox>
+          </td>
+        </ng-container>
 
         <ng-container matColumnDef="Name">
             <th mat-header-cell mat-sort-header *matHeaderCellDef>{{'common.name' | translate}}</th>

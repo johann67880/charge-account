@@ -18,7 +18,10 @@
         "address" : "Dirección",
         "telephone" : "Teléfono",
         "size" : "Tamaño",
-        "uploadedDate" : "Fecha de Subida"
+        "uploadedDate" : "Fecha de Subida",
+        "price" : "Precio",
+        "add" : "Adicionar",
+        "delete" : "Eliminar"
     },
     "billing" : {
         "createBilling" : "Crear cuenta de cobro",

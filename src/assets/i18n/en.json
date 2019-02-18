@@ -18,7 +18,10 @@
         "address" : "Address",
         "telephone" : "Telephone",
         "size" : "Size",
-        "uploadedDate" : "Uploaded Date"
+        "uploadedDate" : "Uploaded Date",
+        "price" : "Price",
+        "add" : "Add",
+        "delete" : "Delete"
     },
     "billing" : {
         "createBilling" : "Crear cuenta de cobro",

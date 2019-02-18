@@ -14,7 +14,7 @@
     </mat-step>
 
     <mat-step [completed]="false" label="{{'common.detailProduct' | translate}}">
-      <p>Products Detail.</p>
+      <product-detail></product-detail>
       <div>
         <button mat-button matStepperPrevious>{{'common.back' | translate}}</button>
         <button mat-button matStepperNext>{{'common.next' | translate}}</button>
@@ -22,7 +22,9 @@
     </mat-step>
 
     <mat-step [completed]="false" label="{{'common.documents' | translate}}">
-      <p>Documents.</p>
+      <div class="document-container">
+        <documents></documents>
+      </div>
       <div>
         <button mat-button matStepperPrevious>{{'common.back' | translate}}</button>
         <button mat-button matStepperNext>{{'common.next' | translate}}</button>
@@ -31,10 +33,7 @@
 
     <mat-step [completed]="false" label="{{'common.preview' | translate}}">
       <div>
-        <p>{{'common.preview' | translate}}</p>
-        <div>
-          <billing-preview [company]="company" [items]="items" [description]="description"></billing-preview>
-        </div>
+        <billing-preview [company]="company" [items]="items" [description]="description"></billing-preview>
       </div>
       <div>
         <button mat-button matStepperPrevious>{{'common.back' | translate}}</button>

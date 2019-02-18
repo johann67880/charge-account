@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import {SelectionModel} from '@angular/cdk/collections';
 import { UserDocument } from '../models/document.model';
 import { DocumentService } from './documents.service';
 
@@ -12,12 +13,14 @@ import { DocumentService } from './documents.service';
 export class DocumentsComponent implements OnInit {
 
   displayedColumns: string[] = [
+    'Select',
     'Name',
     'Size',
     'UploadDate'
   ];
 
-  companies : MatTableDataSource<UserDocument>;
+  selection = new SelectionModel<UserDocument>(true, []);
+  documents : MatTableDataSource<UserDocument>;
   paginatorLength : number = 0;
   isBusy : boolean = false;
 
@@ -30,15 +33,28 @@ export class DocumentsComponent implements OnInit {
     this.getDocuments();
   }
 
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.documents.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    this.isAllSelected() ?
+        this.selection.clear() :
+        this.documents.data.forEach(row => this.selection.select(row));
+  }
+
   getDocuments() {
     this.isBusy = true;
 
     this.service.getAll().subscribe(data => {
       this.isBusy = false;
       
-      this.companies = new MatTableDataSource(data);
-      this.companies.sort = this.sort;
-      this.companies.paginator = this.paginator;
+      this.documents = new MatTableDataSource(data);
+      this.documents.sort = this.sort;
+      this.documents.paginator = this.paginator;
       this.paginatorLength = data.length;
     });
   }

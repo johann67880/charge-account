@@ -1,0 +1,28 @@
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()" novalidate>
+
+    <mat-form-field>
+      <input matInput autocomplete="off" placeholder="{{'common.name' | translate}}" formControlName="defaultName">
+    </mat-form-field>
+
+    <mat-form-field class="price-input">
+      <input matInput autocomplete="off" placeholder="{{'common.price' | translate}}" formControlName="defaultPrice">
+    </mat-form-field>
+
+    <div formArrayName="formArray">
+      <div *ngFor="let control of productForm.controls['formArray'].controls; let i = index">
+          <mat-form-field>
+            <input matInput autocomplete="off" placeholder="{{'common.name' | translate}}">
+          </mat-form-field>
+      
+          <mat-form-field class="price-input">
+            <input matInput autocomplete="off" placeholder="{{'common.price' | translate}}">
+          </mat-form-field>
+
+          <button mat-raised-button color="primary" type="button" (click)="deleteInput(i)">{{'common.delete' | translate}}</button>
+      </div>
+    </div>
+
+    <div class="save-button">
+      <button mat-raised-button color="primary" type="button" (click)="addInput()">{{'common.add' | translate}}</button>
+    </div>
+</form>

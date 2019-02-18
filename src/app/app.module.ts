@@ -14,6 +14,7 @@ import { BillingsComponent } from './billings/billings.component';
 import { DocumentsComponent } from './documents/documents.component';
 import { BillingDetailComponent } from './billing-detail/billing-detail.component';
 import { BillingPreviewComponent } from './billing-preview/billing-preview.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 export function createTranslateLoader(http: HttpClient) {
    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -27,7 +28,8 @@ export function createTranslateLoader(http: HttpClient) {
       BillingsComponent,
       DocumentsComponent,
       BillingDetailComponent,
-      BillingPreviewComponent
+      BillingPreviewComponent,
+      ProductDetailComponent
    ],
    imports: [
       BrowserModule,
