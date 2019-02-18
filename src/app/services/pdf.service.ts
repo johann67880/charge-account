@@ -6,9 +6,9 @@ import jsPDF from 'jspdf';
 @Injectable()
 export class PDFService {
     
-    public previewBillingPDF(company : Company, items : BillingDetail[], description : string) {
+    public previewBillingPDF(company : Company, items : BillingDetail[], description : string) : any {
         var doc = new jsPDF();
-        doc.text("Prueba jsPDF", 35, 25);
-        //doc.save("Test.pdf");
+        doc.text("Prueba Beto", 35, 25);
+        return doc.output('blob');
     }
 }

@@ -21,21 +21,23 @@ export class BillingPreviewComponent implements OnInit, OnChanges {
   @Input()
   description : string;
 
-  pdfSrc: string = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/149125/relativity.pdf';
+  pdfSrc: string;
   public safeUrl: SafeHtml;
+  blobFile : any;
 
   constructor(private pdfService : PDFService, private sanitizer : DomSanitizer) { }
 
   ngOnChanges() {
-    this.pdfService.previewBillingPDF(this.company, this.items, this.description);
-    this.setInnerHtml(this.pdfSrc);
+    this.blobFile = this.pdfService.previewBillingPDF(this.company, this.items, this.description);
+    this.setSafeUrl(this.pdfSrc, this.blobFile);
   }
 
   ngOnInit() {
     
   }
 
-  public setInnerHtml(pdfurl: string) {
-   this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.pdfSrc);
+  public setSafeUrl(pdfurl: string, blobFile : any) {
+    this.pdfSrc = URL.createObjectURL(blobFile);
+    this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.pdfSrc);
   }
 }
