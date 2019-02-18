@@ -30,7 +30,12 @@
     </mat-step>
 
     <mat-step [completed]="false" label="{{'common.preview' | translate}}">
-      <p>Preview.</p>
+      <div>
+        <p>{{'common.preview' | translate}}</p>
+        <div>
+          <billing-preview [company]="company" [items]="items" [description]="description"></billing-preview>
+        </div>
+      </div>
       <div>
         <button mat-button matStepperPrevious>{{'common.back' | translate}}</button>
         <button mat-button>{{'common.finish' | translate}}</button>
