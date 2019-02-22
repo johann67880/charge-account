@@ -15,6 +15,8 @@ import { DocumentsComponent } from './documents/documents.component';
 import { BillingDetailComponent } from './billing-detail/billing-detail.component';
 import { BillingPreviewComponent } from './billing-preview/billing-preview.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { CompanyDetailComponent } from './company-detail/company-detail.component';
+import { CommonService } from './services/common-service.service';
 
 export function createTranslateLoader(http: HttpClient) {
    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -29,7 +31,8 @@ export function createTranslateLoader(http: HttpClient) {
       DocumentsComponent,
       BillingDetailComponent,
       BillingPreviewComponent,
-      ProductDetailComponent
+      ProductDetailComponent,
+      CompanyDetailComponent
    ],
    imports: [
       BrowserModule,
@@ -46,7 +49,8 @@ export function createTranslateLoader(http: HttpClient) {
      })
    ],
    providers: [
-      { provide: 'BASE_URL', useFactory: getBaseUrl }
+      { provide: 'BASE_URL', useFactory: getBaseUrl },
+      CommonService
     ],
    bootstrap: [
       AppComponent

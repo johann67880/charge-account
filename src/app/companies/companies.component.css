@@ -1,3 +1,11 @@
 table {
     width: 100%;
 }
+
+.create-button-container {
+    padding-bottom: 15px;
+}
+
+.uppercase-text {
+    text-transform: uppercase;
+}

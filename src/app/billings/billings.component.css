@@ -1,0 +1,11 @@
+.space-button-text {
+    padding-right: 5px;
+}
+
+.uppercase-text {
+    text-transform: uppercase;
+}
+
+.mat-tab-label .mat-tab-label-content {
+    text-transform: uppercase;
+}

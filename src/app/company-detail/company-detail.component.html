@@ -1,0 +1,62 @@
+<mat-toolbar>
+  <mat-icon class="cursor-pointer" svgIcon="arrow-back" (click)="redirectToCompany()"></mat-icon>
+  <span class="toolbar-title">{{'company.newCompany' | translate}}</span>
+</mat-toolbar>
+
+<form [formGroup]="companyForm" (ngSubmit)="onSubmit()" class="main-container" novalidate>
+
+  <div class="form-input-container">
+    <mat-form-field class="full-width">
+      <mat-select placeholder="{{'common.idType' | translate}}">
+        <mat-option *ngFor="let type of documentTypes" [value]="type.Id">
+          {{type.Name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput autocomplete="off" placeholder="{{'common.tin' | translate}}" formControlName="tin">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput autocomplete="off" placeholder="{{'company.businessName' | translate}}" formControlName="businessName">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput autocomplete="off" placeholder="{{'company.contactName' | translate}}" formControlName="contactName">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput autocomplete="off" placeholder="{{'company.contactPosition' | translate}}" formControlName="contactPosition">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput autocomplete="off" placeholder="{{'company.contactEmail' | translate}}" formControlName="contactEmail">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput autocomplete="off" placeholder="{{'company.phoneNumber' | translate}}" formControlName="phoneNumber">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput autocomplete="off" placeholder="{{'company.cellPhoneNumber' | translate}}" formControlName="cellPhoneNumber">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+        <mat-select placeholder="{{'common.city' | translate}}">
+          <mat-option *ngFor="let type of documentTypes" [value]="type.Id">
+            {{type.Name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  </div>
+  <div class="center-text">
+      <button mat-raised-button color="primary" (click)="saveCompany()">
+        <span class="space-button-text uppercase-text">{{"common.save" | translate}}</span>
+      </button>
+
+      <button mat-raised-button class="space-button" color="primary" (click)="redirectToCompany()">
+        <span class="space-button-text uppercase-text">{{"common.cancel" | translate}}</span>
+      </button>
+  </div>
+</form>

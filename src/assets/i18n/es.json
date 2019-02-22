@@ -21,11 +21,30 @@
         "uploadedDate" : "Fecha de Subida",
         "price" : "Precio",
         "add" : "Adicionar",
-        "delete" : "Eliminar"
+        "delete" : "Eliminar",
+        "foreignerId" : "Cédula de Extranjería",
+        "documentId" : "Cédula de Ciudadanía",
+        "passport" : "Pasaporte",
+        "identityCard" : "Tarjeta de Identidad",
+        "idType" : "Tipo de Documento",
+        "city" : "Ciudad",
+        "cancel" : "Cancelar",
+        "save" : "Guardar"
     },
     "billing" : {
         "createBilling" : "Crear cuenta de cobro",
         "newBilling" : "Nueva cuenta de cobro",
         "editBilling" : "Editar cuenta de cobro"
+    },
+    "company" : {
+        "createCompany" : "Crear empresa",
+        "newCompany" : "Nueva empresa",
+        "editCompany" : "Editar empresa",
+        "businessName" : "Nombre o razón social",
+        "contactName" : "Nombre de contacto",
+        "contactPosition" : "Cargo del contacto",
+        "contactEmail" : "Email del contacto",
+        "phoneNumber" : "Teléfono del contacto",
+        "cellPhoneNumber" : "Celular del contacto"
     }
 }

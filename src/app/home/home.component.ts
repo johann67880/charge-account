@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { CommonService } from '../services/common-service.service';
 
 @Component({
   selector: 'home',
@@ -8,9 +9,14 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private commonService : CommonService) {
+  }
 
   ngOnInit() {
+  }
+
+  onTabChange(index : number) {
+    this.commonService.setSelectedTab(index);
   }
 
 }
