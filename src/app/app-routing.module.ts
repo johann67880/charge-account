@@ -4,7 +4,7 @@ import { HomeComponent } from '../app/home/home.component';
 import { CompaniesComponent } from '../app/companies/companies.component';
 import { DocumentsComponent } from '../app/documents/documents.component';
 import { BillingsComponent } from '../app/billings/billings.component';
-import { BillingDetailComponent } from '../app/billing-detail/billing-detail.component';
+import { StepsComponent } from '../app/steps/steps.component';
 import { CompanyDetailComponent } from './company-detail/company-detail.component';
 
 const routes: Routes = [
@@ -14,7 +14,7 @@ const routes: Routes = [
     { path: "companies-detail", component: CompanyDetailComponent, data: { title: "Companies Detail" } },
     { path: "documents", component: DocumentsComponent, data: { title: "Documents" } },
     { path: "billings", component: BillingsComponent, data: { title: "Billings" } },
-    { path: "billings-detail", component: BillingDetailComponent, data: { title: "Billings Detail" } }
+    { path: "steps", component: StepsComponent, data: { title: "Billings Detail" } }
   ];
   
   

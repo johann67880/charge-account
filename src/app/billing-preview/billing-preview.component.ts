@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Company } from '../models/company.model';
-import { BillingDetail } from '../models/billingDetail.model';
+import { ProductDetail } from '../models/productDetail.model';
 import { PDFService } from '../services/pdf.service';
 import { SafeHtml, DomSanitizer} from '@angular/platform-browser';
 
@@ -16,7 +16,7 @@ export class BillingPreviewComponent implements OnInit, OnChanges {
   company : Company;
 
   @Input()
-  items : BillingDetail[];
+  items : ProductDetail[];
 
   @Input()
   description : string;

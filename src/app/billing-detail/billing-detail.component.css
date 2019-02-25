@@ -1,12 +1,32 @@
-.cursor-pointer {
-    cursor: pointer;
+.display-inline {
+    display: inline;
 }
 
-.toolbar-title {
-    padding-left: 10px;
+.text-right {
+    text-align: right;
 }
 
-.document-container {
+.text-left {
+    text-align: left;
+}
+
+.billing-detail-container {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.table-width {
+    width: 80%;
+}
+
+.row-spacing {
+    padding-right: 40px;
+}
+
+.table-container {
     padding-top: 20px;
-    padding-bottom: 20px;
 }

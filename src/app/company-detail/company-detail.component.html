@@ -3,11 +3,11 @@
   <span class="toolbar-title">{{'company.newCompany' | translate}}</span>
 </mat-toolbar>
 
-<form [formGroup]="companyForm" (ngSubmit)="onSubmit()" class="main-container" novalidate>
+<form [formGroup]="companyForm" class="main-container" novalidate>
 
   <div class="form-input-container">
     <mat-form-field class="full-width">
-      <mat-select placeholder="{{'common.idType' | translate}}">
+      <mat-select placeholder="{{'common.idType' | translate}}" formControlName="selectDocument">
         <mat-option *ngFor="let type of documentTypes" [value]="type.Id">
           {{type.Name}}
         </mat-option>
@@ -41,14 +41,6 @@
     <mat-form-field class="full-width">
       <input matInput autocomplete="off" placeholder="{{'company.cellPhoneNumber' | translate}}" formControlName="cellPhoneNumber">
     </mat-form-field>
-
-    <mat-form-field class="full-width">
-        <mat-select placeholder="{{'common.city' | translate}}">
-          <mat-option *ngFor="let type of documentTypes" [value]="type.Id">
-            {{type.Name}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
   </div>
   <div class="center-text">
       <button mat-raised-button color="primary" (click)="saveCompany()">

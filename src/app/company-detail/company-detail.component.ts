@@ -48,6 +48,7 @@ export class CompanyDetailComponent implements OnInit {
       contactEmail: ['', [Validators.required]],
       phoneNumber: ['', [Validators.required]],
       cellPhoneNumber: ['', [Validators.required]],
+      selectDocument : ['', Validators.required]
     });
   }
 

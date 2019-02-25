@@ -6,17 +6,19 @@ import { MaterialModule } from './common/material.module';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { CompaniesComponent } from './companies/companies.component';
 import { BillingsComponent } from './billings/billings.component';
 import { DocumentsComponent } from './documents/documents.component';
-import { BillingDetailComponent } from './billing-detail/billing-detail.component';
+import { StepsComponent } from './steps/steps.component';
 import { BillingPreviewComponent } from './billing-preview/billing-preview.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { CompanyDetailComponent } from './company-detail/company-detail.component';
 import { CommonService } from './services/common-service.service';
+import { BillingDetailComponent } from './billing-detail/billing-detail.component';
 
 export function createTranslateLoader(http: HttpClient) {
    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -29,10 +31,11 @@ export function createTranslateLoader(http: HttpClient) {
       CompaniesComponent,
       BillingsComponent,
       DocumentsComponent,
-      BillingDetailComponent,
+      StepsComponent,
       BillingPreviewComponent,
       ProductDetailComponent,
-      CompanyDetailComponent
+      CompanyDetailComponent,
+      BillingDetailComponent
    ],
    imports: [
       BrowserModule,
@@ -40,6 +43,7 @@ export function createTranslateLoader(http: HttpClient) {
       AppRoutingModule,
       MaterialModule,
       HttpClientModule,
+      FlexLayoutModule,
       TranslateModule.forRoot({
          loader: {
              provide: TranslateLoader,

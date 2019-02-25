@@ -1,31 +1,62 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Location } from '@angular/common';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
+import { BillingDetailService } from '../steps/steps.service';
 import { Company } from '../models/company.model';
-import { BillingDetail } from '../models/billingDetail.model';
+import { CompanyService } from '../companies/company.service';
 
 @Component({
   selector: 'billing-detail',
   templateUrl: './billing-detail.component.html',
   styleUrls: ['./billing-detail.component.css'],
-  encapsulation: ViewEncapsulation.None
+  providers : [CompanyService, BillingDetailService]
 })
 export class BillingDetailComponent implements OnInit {
 
-  firstFormGroup : FormGroup;
-
-  company : Company;
-  items : BillingDetail[];
-  description : string;
-
-  constructor(private location : Location, private formBuilder : FormBuilder) { }
+  billingForm : FormGroup;
+  billingNumber : string;
+  currentDate : Date = new Date();
+  dateFormat : string;
+  companies : Company[];
+  
+  constructor(private translateService : TranslateService, private billingDetailService : BillingDetailService, 
+    private companyService : CompanyService, private formBuilder : FormBuilder) {
+      
+    this.translateService.get([
+      'billing.dateFormat'
+    ]).subscribe(result => {
+      this.dateFormat = result['billing.dateFormat'];
+    });
+  }
 
   ngOnInit() {
-    this.firstFormGroup = this.formBuilder.group({ });
+    this.billingForm = this.formBuilder.group({
+      selectCompany : ['', Validators.required],
+      companyName : ['', Validators.required],
+      companyTin : ['', Validators.required],
+      contactName : ['', Validators.required],
+      sourceName : ['', Validators.required],
+      sourceTin : ['', Validators.required],
+    });
+
+    this.billingForm.controls.companyName.disable();
+    this.billingForm.controls.companyTin.disable();
+    this.billingForm.controls.contactName.disable();
+
+    this.getBillingNumber();
+
+    this.getCompanies();
   }
 
-  goBack() : void {
-    this.location.back();
+  getBillingNumber() {
+    this.billingDetailService.getBillingNumber().subscribe(result => {
+      this.billingNumber = result.Id;
+    });
   }
 
+  getCompanies() {
+    this.companyService.getAll().subscribe(result => {
+      this.companies = result;
+    });
+  }
 }

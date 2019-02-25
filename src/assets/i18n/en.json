@@ -29,12 +29,18 @@
         "idType" : "ID",
         "city" : "City",
         "cancel" : "Cancel",
-        "save" : "Save"
+        "save" : "Save",
+        "tinOrDocument" : "TIN or Document Id",
+        "select" : "Select",
+        "selectCompany" : "Select a company"
     },
     "billing" : {
         "createBilling" : "Crear cuenta de cobro",
         "newBilling" : "Nueva cuenta de cobro",
-        "editBilling" : "Editar cuenta de cobro"
+        "editBilling" : "Editar cuenta de cobro",
+        "number" : "Billing number",
+        "date" : "Billing date",
+        "dateFormat" : "MM/dd/yyyy"
     },
     "company" : {
         "createCompany" : "Create company",

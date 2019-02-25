@@ -1,45 +1,64 @@
-<mat-toolbar>
-  <mat-icon class="cursor-pointer" svgIcon="arrow-back" (click)="goBack()"></mat-icon>
-  <span class="toolbar-title">{{'billing.newBilling' | translate}}</span>
-</mat-toolbar>
-
-<div>
-  <mat-horizontal-stepper>
-
-    <mat-step [completed]="false" label="{{'common.billing' | translate}}">
-      <p>Put table with billings</p>
-      <div>
-        <button mat-button matStepperNext>{{'common.next' | translate}}</button>
+<form [formGroup]="billingForm" class="main-container" novalidate>
+  
+  <div class="billing-detail-container">
+    <div>
+      <div fxLayout="row" fxFlex="50" fxLayoutAlign="start center">
+        <p>{{'billing.number' | translate}} : {{billingNumber}}</p>
       </div>
-    </mat-step>
+      <div fxLayout="row" fxFlex="50" fxLayoutAlign="end center">
+          <p>{{'billing.date' | translate}} : {{currentDate | date : dateFormat}}</p>
+      </div>
+    </div>
 
-    <mat-step [completed]="false" label="{{'common.detailProduct' | translate}}">
-      <product-detail></product-detail>
-      <div>
-        <button mat-button matStepperPrevious>{{'common.back' | translate}}</button>
-        <button mat-button matStepperNext>{{'common.next' | translate}}</button>
-      </div>
-    </mat-step>
+    <div fxLayout="row" class="table-container" fxLayoutAlign="center center">
 
-    <mat-step [completed]="false" label="{{'common.documents' | translate}}">
-      <div class="document-container">
-        <documents></documents>
-      </div>
-      <div>
-        <button mat-button matStepperPrevious>{{'common.back' | translate}}</button>
-        <button mat-button matStepperNext>{{'common.next' | translate}}</button>
-      </div>
-    </mat-step>
+      <table class="table-width">
+        <tr>
+          <td class="row-spacing">
+            <mat-form-field class="full-width">
+              <mat-select placeholder="{{'common.selectCompany' | translate}}" formControlName="selectCompany">
+                <mat-option *ngFor="let company of companies" [value]="company.Id">
+                  {{company.Name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
 
-    <mat-step [completed]="false" label="{{'common.preview' | translate}}">
-      <div>
-        <billing-preview [company]="company" [items]="items" [description]="description"></billing-preview>
-      </div>
-      <div>
-        <button mat-button matStepperPrevious>{{'common.back' | translate}}</button>
-        <button mat-button>{{'common.finish' | translate}}</button>
-      </div>
-    </mat-step>
+          <td>
+            <mat-form-field class="full-width">
+              <input matInput autocomplete="off" placeholder="{{'common.company' | translate}}" formControlName="companyName">
+            </mat-form-field>
+          </td>
+        </tr>
 
-  </mat-horizontal-stepper>
-</div>
+        <tr>
+          <td class="row-spacing">
+            <mat-form-field class="full-width">
+              <input matInput autocomplete="off" placeholder="{{'common.tinOrDocument' | translate}}" formControlName="companyTin" [disabled]="true">
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="full-width">
+              <input matInput autocomplete="off" placeholder="{{'company.contactName' | translate}}" formControlName="contactName" [disabled]="true" >
+            </mat-form-field>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="row-spacing">
+            <mat-form-field class="full-width">
+              <input matInput autocomplete="off" placeholder="{{'common.name' | translate}}" formControlName="sourceName">
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="full-width">
+              <input matInput autocomplete="off" placeholder="{{'common.tinOrDocument' | translate}}" formControlName="sourceTin">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</form>

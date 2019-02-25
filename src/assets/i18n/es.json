@@ -29,12 +29,18 @@
         "idType" : "Tipo de Documento",
         "city" : "Ciudad",
         "cancel" : "Cancelar",
-        "save" : "Guardar"
+        "save" : "Guardar",
+        "tinOrDocument" : "NIT o Cédula",
+        "select" : "Seleccione",
+        "selectCompany" : "Seleccione una empresa"
     },
     "billing" : {
         "createBilling" : "Crear cuenta de cobro",
         "newBilling" : "Nueva cuenta de cobro",
-        "editBilling" : "Editar cuenta de cobro"
+        "editBilling" : "Editar cuenta de cobro",
+        "number" : "Número de cuenta de cobro",
+        "date" : "Fecha de cuenta de cobro",
+        "dateFormat" : "dd/MM/yyyy"
     },
     "company" : {
         "createCompany" : "Crear empresa",
