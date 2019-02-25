@@ -5,4 +5,7 @@ export class Company {
     Email : string;
     Telephone : string;
     Address : string;
+    ContactName : string;
+    ContactPosition : string;
+    Cellphone : string;
 }

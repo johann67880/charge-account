@@ -11,15 +11,15 @@
         <billing-detail></billing-detail>
       </div>
       <div>
-        <button mat-button matStepperNext>{{'common.next' | translate}}</button>
+        <button mat-button mat-stroked-button color="primary" matStepperNext>{{'common.next' | translate}}</button>
       </div>
     </mat-step>
 
     <mat-step [completed]="false" label="{{'common.detailProduct' | translate}}">
       <product-detail></product-detail>
       <div>
-        <button mat-button matStepperPrevious>{{'common.back' | translate}}</button>
-        <button mat-button matStepperNext>{{'common.next' | translate}}</button>
+        <button mat-button class="paginator-button-space" mat-stroked-button color="primary" matStepperPrevious>{{'common.back' | translate}}</button>
+        <button mat-button mat-stroked-button color="primary" matStepperNext>{{'common.next' | translate}}</button>
       </div>
     </mat-step>
 
@@ -28,8 +28,8 @@
         <documents></documents>
       </div>
       <div>
-        <button mat-button matStepperPrevious>{{'common.back' | translate}}</button>
-        <button mat-button matStepperNext>{{'common.next' | translate}}</button>
+        <button mat-button class="paginator-button-space" mat-stroked-button color="primary" matStepperPrevious>{{'common.back' | translate}}</button>
+        <button mat-button mat-stroked-button color="primary" matStepperNext>{{'common.next' | translate}}</button>
       </div>
     </mat-step>
 
@@ -38,8 +38,8 @@
         <billing-preview [company]="company" [items]="items" [description]="description"></billing-preview>
       </div>
       <div>
-        <button mat-button matStepperPrevious>{{'common.back' | translate}}</button>
-        <button mat-button>{{'common.finish' | translate}}</button>
+        <button mat-button class="paginator-button-space" mat-stroked-button color="primary" matStepperPrevious>{{'common.back' | translate}}</button>
+        <button mat-button mat-stroked-button color="primary">{{'common.finish' | translate}}</button>
       </div>
     </mat-step>
 

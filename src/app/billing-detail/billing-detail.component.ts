@@ -18,6 +18,7 @@ export class BillingDetailComponent implements OnInit {
   currentDate : Date = new Date();
   dateFormat : string;
   companies : Company[];
+  selectedCompany : Company;
   
   constructor(private translateService : TranslateService, private billingDetailService : BillingDetailService, 
     private companyService : CompanyService, private formBuilder : FormBuilder) {
@@ -32,7 +33,7 @@ export class BillingDetailComponent implements OnInit {
   ngOnInit() {
     this.billingForm = this.formBuilder.group({
       selectCompany : ['', Validators.required],
-      companyName : ['', Validators.required],
+      companyName : ['', Validators.required, {value: 'Nancy', disabled: true}],
       companyTin : ['', Validators.required],
       contactName : ['', Validators.required],
       sourceName : ['', Validators.required],
@@ -58,5 +59,12 @@ export class BillingDetailComponent implements OnInit {
     this.companyService.getAll().subscribe(result => {
       this.companies = result;
     });
+  }
+
+  getSelectedCompany(event : any) {
+    this.selectedCompany = this.companies.find(c => c.Id == event.value);
+    this.billingForm.controls.companyName.setValue(this.selectedCompany.Name);
+    this.billingForm.controls.companyTin.setValue(this.selectedCompany.Tin);
+    this.billingForm.controls.contactName.setValue(this.selectedCompany.ContactName);
   }
 }

@@ -10,3 +10,7 @@
     padding-top: 20px;
     padding-bottom: 20px;
 }
+
+.paginator-button-space {
+    margin-right: 10px !important;
+}

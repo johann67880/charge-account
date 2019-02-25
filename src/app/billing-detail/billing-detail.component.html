@@ -16,7 +16,7 @@
         <tr>
           <td class="row-spacing">
             <mat-form-field class="full-width">
-              <mat-select placeholder="{{'common.selectCompany' | translate}}" formControlName="selectCompany">
+              <mat-select (selectionChange)="getSelectedCompany($event)" placeholder="{{'common.selectCompany' | translate}}" formControlName="selectCompany">
                 <mat-option *ngFor="let company of companies" [value]="company.Id">
                   {{company.Name}}
                 </mat-option>
