@@ -1,28 +1,42 @@
 <form [formGroup]="productForm" (ngSubmit)="onSubmit()" novalidate>
 
-    <mat-form-field>
-      <input matInput autocomplete="off" placeholder="{{'common.name' | translate}}" formControlName="defaultName">
-    </mat-form-field>
+  <div fxLayout="row" class="main-container ">
+    <div fxFlex="60" fxLayoutAlign="start center">
 
-    <mat-form-field class="price-input">
-      <input matInput autocomplete="off" placeholder="{{'common.price' | translate}}" formControlName="defaultPrice">
-    </mat-form-field>
+      <mat-card class="details-width">
 
-    <div formArrayName="formArray">
-      <div [formGroupName]="i" *ngFor="let control of productForm.controls['formArray'].controls; let i = index">
-          <mat-form-field>
-            <input formControlName="dynamicName" matInput autocomplete="off" placeholder="{{'common.name' | translate}}">
-          </mat-form-field>
-      
-          <mat-form-field class="price-input">
-            <input formControlName="dynamicPrice" matInput autocomplete="off" placeholder="{{'common.price' | translate}}">
-          </mat-form-field>
+        <mat-form-field class="product-width">
+          <input matInput autocomplete="off" placeholder="{{'common.name' | translate}}" formControlName="defaultName">
+        </mat-form-field>
 
-          <button mat-raised-button color="primary" type="button" (click)="deleteInput(i)">{{'common.delete' | translate}}</button>
-      </div>
+        <mat-form-field class="price-width price-input">
+          <input matInput autocomplete="off" placeholder="{{'common.price' | translate}}" formControlName="defaultPrice">
+        </mat-form-field>
+
+        <div formArrayName="formArray">
+          <div [formGroupName]="i" *ngFor="let control of productForm.controls['formArray'].controls; let i = index">
+              
+            <mat-form-field class="product-width">
+                <input formControlName="dynamicName" matInput autocomplete="off" placeholder="{{'common.name' | translate}}">
+              </mat-form-field>
+          
+              <mat-form-field class="price-width price-input">
+                <input formControlName="dynamicPrice" matInput autocomplete="off" placeholder="{{'common.price' | translate}}">
+              </mat-form-field>
+  
+              <button mat-raised-button color="primary" type="button" (click)="deleteInput(i)">{{'common.delete' | translate}}</button>
+          </div>
+        </div>
+
+        <div class="save-button">
+          <button mat-raised-button color="primary" type="button" (click)="addInput()">{{'common.add' | translate}}</button>
+        </div>
+
+      </mat-card>
     </div>
 
-    <div class="save-button">
-      <button mat-raised-button color="primary" type="button" (click)="addInput()">{{'common.add' | translate}}</button>
+    <div fxFlex="40">
+        <mat-card>Simple card</mat-card>
     </div>
+  </div>
 </form>

@@ -5,4 +5,22 @@
 
 .save-button {
     padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.main-container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.product-width {
+    width :50% !important;
+}
+
+.price-width {
+    width: 30% !important;
+}
+
+.details-width {
+    width: 90%;
 }
