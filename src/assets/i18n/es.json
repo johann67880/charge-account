@@ -34,7 +34,8 @@
         "select" : "Seleccione",
         "selectCompany" : "Seleccione una empresa",
         "totalConcepts" : "Total conceptos",
-        "countConcepts" : "Número de conceptos"
+        "countConcepts" : "Número de conceptos",
+        "totalInText" : "Total en letras"
     },
     "billing" : {
         "createBilling" : "Crear cuenta de cobro",

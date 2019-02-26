@@ -14,7 +14,7 @@
 
       <table class="table-width">
         <tr>
-          <td class="row-spacing">
+          <td class="left-row-spacing">
             <mat-form-field class="full-width">
               <mat-select (selectionChange)="getSelectedCompany($event)" placeholder="{{'common.selectCompany' | translate}}" formControlName="selectCompany">
                 <mat-option *ngFor="let company of companies" [value]="company.Id">
@@ -24,7 +24,7 @@
             </mat-form-field>
           </td>
 
-          <td>
+          <td class="right-row-spacing">
             <mat-form-field class="full-width">
               <input matInput autocomplete="off" placeholder="{{'common.company' | translate}}" formControlName="companyName">
             </mat-form-field>
@@ -32,13 +32,13 @@
         </tr>
 
         <tr>
-          <td class="row-spacing">
+          <td class="left-row-spacing">
             <mat-form-field class="full-width">
               <input matInput autocomplete="off" placeholder="{{'common.tinOrDocument' | translate}}" formControlName="companyTin" [disabled]="true">
             </mat-form-field>
           </td>
 
-          <td>
+          <td class="right-row-spacing">
             <mat-form-field class="full-width">
               <input matInput autocomplete="off" placeholder="{{'company.contactName' | translate}}" formControlName="contactName" [disabled]="true" >
             </mat-form-field>
@@ -46,13 +46,13 @@
         </tr>
 
         <tr>
-          <td class="row-spacing">
+          <td class="left-row-spacing">
             <mat-form-field class="full-width">
               <input matInput autocomplete="off" placeholder="{{'common.name' | translate}}" formControlName="sourceName">
             </mat-form-field>
           </td>
 
-          <td>
+          <td class="right-row-spacing">
             <mat-form-field class="full-width">
               <input matInput autocomplete="off" placeholder="{{'common.tinOrDocument' | translate}}" formControlName="sourceTin">
             </mat-form-field>

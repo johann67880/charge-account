@@ -11,8 +11,9 @@
 }
 
 .billing-detail-container {
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 20px
 }
 
 .full-width {
@@ -20,13 +21,18 @@
 }
 
 .table-width {
-    width: 80%;
+    width: 100%;
 }
 
-.row-spacing {
+.left-row-spacing {
     padding-right: 40px;
+}
+
+.right-row-spacing {
+    padding-left: 40px;
 }
 
 .table-container {
     padding-top: 20px;
+    padding-bottom: 20px;
 }
