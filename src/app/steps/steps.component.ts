@@ -15,9 +15,6 @@ import { BillingDetailService } from './steps.service';
 })
 export class StepsComponent implements OnInit {
 
-  items : ProductDetail[];
-  description : string;
-
   constructor(private location : Location) {
   }
 

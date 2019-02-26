@@ -4,6 +4,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { BillingDetailService } from '../steps/steps.service';
 import { Company } from '../models/company.model';
 import { CompanyService } from '../companies/company.service';
+import { CommonService } from '../services/common-service.service';
+import { CompanyStepModel } from '../models/companyStep.model';
 
 @Component({
   selector: 'billing-detail',
@@ -21,7 +23,7 @@ export class BillingDetailComponent implements OnInit {
   selectedCompany : Company;
   
   constructor(private translateService : TranslateService, private billingDetailService : BillingDetailService, 
-    private companyService : CompanyService, private formBuilder : FormBuilder) {
+    private companyService : CompanyService, private formBuilder : FormBuilder, private commonService : CommonService) {
       
     this.translateService.get([
       'billing.dateFormat'
@@ -66,5 +68,13 @@ export class BillingDetailComponent implements OnInit {
     this.billingForm.controls.companyName.setValue(this.selectedCompany.Name);
     this.billingForm.controls.companyTin.setValue(this.selectedCompany.Tin);
     this.billingForm.controls.contactName.setValue(this.selectedCompany.ContactName);
+
+    //set selected company to be obtained from other siblings components
+    let companyModel : CompanyStepModel = new CompanyStepModel();
+    companyModel.selectedCompany = this.selectedCompany;
+    companyModel.sourceName =  this.billingForm.controls.sourceName.value;
+    companyModel.sourceTin = this.billingForm.controls.sourceTin.value;
+
+    this.commonService.setSelectedCompany(companyModel);
   }
 }

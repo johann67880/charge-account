@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CommonService } from '../services/common-service.service';
+import { ProductDetailStepModel } from '../models/productDetailStep.model';
+import { TranslateService } from '@ngx-translate/core';
+
+declare var require: any;
 
 @Component({
   selector: 'product-detail',
@@ -13,8 +18,9 @@ export class ProductDetailComponent implements OnInit {
   countConcepts : number = 0;
   writtenNumber : any;
   totalConceptsText : string = "";
+  conceptsModel : ProductDetailStepModel = new ProductDetailStepModel();
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private commonService : CommonService, private translateService : TranslateService) { }
 
   ngOnInit() {
     this.writtenNumber = require('written-number');
@@ -37,8 +43,14 @@ export class ProductDetailComponent implements OnInit {
       let validConcepts = this.productForm.controls.formArray.value.filter(x => x.dynamicName !== "" && x.dynamicPrice !== "");
       this.totalConcepts += validConcepts.reduce((sum, current) => sum + parseFloat(current.dynamicPrice), 0);
       this.countConcepts += (validConcepts) ? validConcepts.length : 0;
+      this.totalConceptsText = this.writtenNumber(this.totalConcepts) + " " + this.translateService.instant("common.coinName");
 
-      this.totalConceptsText = this.writtenNumber(this.totalConcepts);
+      this.conceptsModel.Concepts = validConcepts;
+      this.conceptsModel.Description = "";
+      this.conceptsModel.Total = this.totalConcepts;
+      this.conceptsModel.TotalText = this.totalConceptsText;
+
+      this.commonService.setConcepts(this.conceptsModel);
     });
   }
 

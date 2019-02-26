@@ -35,7 +35,8 @@
         "selectCompany" : "Select a company",
         "totalConcepts" : "Total concepts",
         "countConcepts" : "Number of conceptos",
-        "totalInText" : "Total in text"
+        "totalInText" : "Total in text",
+        "coinName" : "USD"
     },
     "billing" : {
         "createBilling" : "Crear cuenta de cobro",

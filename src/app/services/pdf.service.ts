@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Company } from '../models/company.model';
-import { ProductDetail } from '../models/productDetail.model';
 import jsPDF from 'jspdf';
+import { CompanyStepModel } from '../models/companyStep.model';
+import { ProductDetailStepModel } from '../models/productDetailStep.model';
 
 @Injectable()
 export class PDFService {
     
-    public previewBillingPDF(company : Company, items : ProductDetail[], description : string) : any {
+    public previewBillingPDF(company : CompanyStepModel, concepts : ProductDetailStepModel) : any {
         var doc = new jsPDF();
         doc.text("Prueba Beto", 35, 25);
         return doc.output('blob');

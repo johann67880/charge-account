@@ -34,8 +34,8 @@
     </mat-step>
 
     <mat-step [completed]="false" label="{{'common.preview' | translate}}">
-      <div>
-        <billing-preview [company]="company" [items]="items" [description]="description"></billing-preview>
+      <div class="preview-container">
+        <billing-preview></billing-preview>
       </div>
       <div>
         <button mat-button class="paginator-button-space" mat-stroked-button color="primary" matStepperPrevious>{{'common.back' | translate}}</button>

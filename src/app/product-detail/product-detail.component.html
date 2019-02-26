@@ -10,7 +10,7 @@
         </mat-form-field>
 
         <mat-form-field class="price-width price-input">
-          <input matInput autocomplete="off" placeholder="{{'common.price' | translate}}" formControlName="defaultPrice">
+          <input matInput type="number" autocomplete="off" placeholder="{{'common.price' | translate}}" formControlName="defaultPrice">
         </mat-form-field>
 
         <div formArrayName="formArray">
@@ -21,7 +21,7 @@
               </mat-form-field>
           
               <mat-form-field class="price-width price-input">
-                <input formControlName="dynamicPrice" matInput autocomplete="off" placeholder="{{'common.price' | translate}}">
+                <input formControlName="dynamicPrice" type="number" matInput autocomplete="off" placeholder="{{'common.price' | translate}}">
               </mat-form-field>
   
               <button mat-raised-button color="primary" type="button" (click)="deleteInput(i)">{{'common.delete' | translate}}</button>

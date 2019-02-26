@@ -1,8 +1,7 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { Company } from '../models/company.model';
-import { ProductDetail } from '../models/productDetail.model';
+import { Component, OnInit } from '@angular/core';
 import { PDFService } from '../services/pdf.service';
 import { SafeHtml, DomSanitizer} from '@angular/platform-browser';
+import { CommonService } from '../services/common-service.service';
 
 @Component({
   selector: 'billing-preview',
@@ -10,30 +9,18 @@ import { SafeHtml, DomSanitizer} from '@angular/platform-browser';
   styleUrls: ['./billing-preview.component.css'],
   providers : [PDFService]
 })
-export class BillingPreviewComponent implements OnInit, OnChanges {
-
-  @Input()
-  company : Company;
-
-  @Input()
-  items : ProductDetail[];
-
-  @Input()
-  description : string;
+export class BillingPreviewComponent implements OnInit {
 
   pdfSrc: string;
   public safeUrl: SafeHtml;
   blobFile : any;
 
-  constructor(private pdfService : PDFService, private sanitizer : DomSanitizer) { }
-
-  ngOnChanges() {
-    this.blobFile = this.pdfService.previewBillingPDF(this.company, this.items, this.description);
-    this.setSafeUrl(this.pdfSrc, this.blobFile);
-  }
+  constructor(private pdfService : PDFService, private sanitizer : DomSanitizer, private commonService : CommonService) { }
 
   ngOnInit() {
-    
+    //Pass values to pdf service.
+    this.blobFile = this.pdfService.previewBillingPDF(this.commonService.getSelectedCompany(), this.commonService.getConcepts());
+    this.setSafeUrl(this.pdfSrc, this.blobFile);
   }
 
   public setSafeUrl(pdfurl: string, blobFile : any) {
