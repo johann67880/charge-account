@@ -15,7 +15,17 @@ export class BillingPreviewComponent implements OnInit {
   public safeUrl: SafeHtml;
   blobFile : any;
 
-  constructor(private pdfService : PDFService, private sanitizer : DomSanitizer, private commonService : CommonService) { }
+  titles = {
+    tin  : "",
+    billing : "",
+    to : "",
+    amountTitle : "",
+    conceptsTitle : ""
+  };
+
+  constructor(private pdfService : PDFService, private sanitizer : DomSanitizer, private commonService : CommonService) {
+    
+  }
 
   ngOnInit() {
     //Pass values to pdf service.

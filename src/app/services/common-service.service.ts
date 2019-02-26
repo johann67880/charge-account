@@ -8,6 +8,7 @@ export class CommonService {
   
   private companyStepModel : CompanyStepModel;
   private conceptsModel : ProductDetailStepModel;
+  private billingId : string;
 
 
   getSelectedTab() {
@@ -32,5 +33,13 @@ export class CommonService {
 
   setConcepts(concepts : ProductDetailStepModel) {
     this.conceptsModel = concepts;
+  }
+
+  getBillingId() {
+    return this.billingId;
+  }
+
+  setBillingId(value : string) {
+    this.billingId = value;
   }
 }

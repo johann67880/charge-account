@@ -38,8 +38,8 @@ export class BillingDetailComponent implements OnInit {
       companyName : ['', Validators.required, {value: 'Nancy', disabled: true}],
       companyTin : ['', Validators.required],
       contactName : ['', Validators.required],
-      sourceName : ['', Validators.required],
-      sourceTin : ['', Validators.required],
+      destinationName : ['', Validators.required],
+      destinationTin : ['', Validators.required],
     });
 
     this.billingForm.controls.companyName.disable();
@@ -54,6 +54,7 @@ export class BillingDetailComponent implements OnInit {
   getBillingNumber() {
     this.billingDetailService.getBillingNumber().subscribe(result => {
       this.billingNumber = result.Id;
+      this.commonService.setBillingId(this.billingNumber);
     });
   }
 
@@ -72,8 +73,8 @@ export class BillingDetailComponent implements OnInit {
     //set selected company to be obtained from other siblings components
     let companyModel : CompanyStepModel = new CompanyStepModel();
     companyModel.selectedCompany = this.selectedCompany;
-    companyModel.sourceName =  this.billingForm.controls.sourceName.value;
-    companyModel.sourceTin = this.billingForm.controls.sourceTin.value;
+    companyModel.destinationName =  this.billingForm.controls.sourceName.value;
+    companyModel.destinationTin = this.billingForm.controls.sourceTin.value;
 
     this.commonService.setSelectedCompany(companyModel);
   }

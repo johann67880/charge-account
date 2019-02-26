@@ -35,8 +35,6 @@ export class CompanyDetailComponent implements OnInit {
           { Id: 5, Name: result['common.identityCard']},
         ];
     });
-
-    console.log(this.translateService.instant('company.businessName'));
   }
 
   ngOnInit() {

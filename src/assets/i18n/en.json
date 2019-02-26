@@ -56,5 +56,10 @@
         "contactEmail" : "Contact email",
         "phoneNumber" : "Phone number",
         "cellPhoneNumber" : "Cellphone number"
+    },
+    "pdfFile" : {
+        "to" : "To",
+        "amountTitle" : "The sum of",
+        "conceptsTitle" : "Concepts"
     }
 }

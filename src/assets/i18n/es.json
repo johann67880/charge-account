@@ -56,5 +56,10 @@
         "contactEmail" : "Email del contacto",
         "phoneNumber" : "Teléfono del contacto",
         "cellPhoneNumber" : "Celular del contacto"
+    },
+    "pdfFile" : {
+        "to" : "Debe a",
+        "amountTitle" : "La suma de",
+        "conceptsTitle" : "Por concepto de"
     }
 }
