@@ -24,3 +24,15 @@
 .details-width {
     width: 90%;
 }
+
+.consolidated-item {
+    padding-bottom: 15px;
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
+.capitalize-text {
+    text-transform: capitalize !important;
+}

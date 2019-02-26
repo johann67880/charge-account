@@ -9,10 +9,18 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ProductDetailComponent implements OnInit {
 
   productForm: FormGroup;
+  totalConcepts : number = 0;
+  countConcepts : number = 0;
+  writtenNumber : any;
+  totalConceptsText : string = "";
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.writtenNumber = require('written-number');
+    this.writtenNumber.defaults.lang = 'es';
+    this.totalConceptsText = this.writtenNumber(this.totalConcepts);
+
     let newForm = this.fb.group({
       defaultName: ['', [Validators.required]],
       defaultPrice: ['', [Validators.required]],
@@ -20,6 +28,18 @@ export class ProductDetailComponent implements OnInit {
     });
 
     this.productForm = newForm;
+
+    this.productForm.valueChanges.subscribe( data => {
+
+      this.totalConcepts = (this.productForm.controls.defaultPrice.value) ? parseFloat(this.productForm.controls.defaultPrice.value) : 0;
+      this.countConcepts = (this.productForm.controls.defaultName.value) ? 1 : 0;
+
+      let validConcepts = this.productForm.controls.formArray.value.filter(x => x.dynamicName !== "" && x.dynamicPrice !== "");
+      this.totalConcepts += validConcepts.reduce((sum, current) => sum + parseFloat(current.dynamicPrice), 0);
+      this.countConcepts += (validConcepts) ? validConcepts.length : 0;
+
+      this.totalConceptsText = this.writtenNumber(this.totalConcepts);
+    });
   }
 
   addInput(): void {
@@ -37,5 +57,4 @@ export class ProductDetailComponent implements OnInit {
     const arrayControl = <FormArray>this.productForm.controls['formArray'];
     arrayControl.removeAt(index);
   }
-
 }

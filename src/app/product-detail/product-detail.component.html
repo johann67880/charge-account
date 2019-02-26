@@ -36,7 +36,34 @@
     </div>
 
     <div fxFlex="40">
-        <mat-card>Simple card</mat-card>
+        <mat-card>
+          <div>
+            <div class="consolidated-item">
+              <span class="bold-text">
+                {{'common.countConcepts' | translate}} :
+              </span> 
+              <span>
+                {{countConcepts}}
+              </span>
+            </div>
+            <div class="consolidated-item">
+              <span class="bold-text">
+                {{'common.totalConcepts' | translate}} :
+              </span>
+              <span>
+                {{totalConcepts | currency}}
+              </span>
+            </div>
+            <div class="consolidated-item">
+              <span class="bold-text">
+                {{'common.totalConcepts' | translate}} :
+              </span>
+              <span class="capitalize-text">
+                {{totalConceptsText}}
+              </span>
+            </div>
+          </div>
+        </mat-card>
     </div>
   </div>
 </form>

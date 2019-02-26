@@ -32,7 +32,9 @@
         "save" : "Save",
         "tinOrDocument" : "TIN or Document Id",
         "select" : "Select",
-        "selectCompany" : "Select a company"
+        "selectCompany" : "Select a company",
+        "totalConcepts" : "Total concepts",
+        "countConcepts" : "Number of conceptos"
     },
     "billing" : {
         "createBilling" : "Crear cuenta de cobro",

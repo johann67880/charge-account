@@ -32,7 +32,9 @@
         "save" : "Guardar",
         "tinOrDocument" : "NIT o Cédula",
         "select" : "Seleccione",
-        "selectCompany" : "Seleccione una empresa"
+        "selectCompany" : "Seleccione una empresa",
+        "totalConcepts" : "Total conceptos",
+        "countConcepts" : "Número de conceptos"
     },
     "billing" : {
         "createBilling" : "Crear cuenta de cobro",
