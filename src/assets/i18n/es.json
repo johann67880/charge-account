@@ -60,6 +60,8 @@
     "pdfFile" : {
         "to" : "Debe a",
         "amountTitle" : "La suma de",
-        "conceptsTitle" : "Por concepto de"
+        "conceptsTitle" : "Por concepto de",
+        "concepts" : "Conceptos",
+        "totalValue" : "Valor total"
     }
 }

@@ -60,6 +60,8 @@
     "pdfFile" : {
         "to" : "To",
         "amountTitle" : "The sum of",
-        "conceptsTitle" : "Concepts"
+        "conceptsTitle" : "Concepts",
+        "concepts" : "Concepts",
+        "totalValue" : "Total value"
     }
 }

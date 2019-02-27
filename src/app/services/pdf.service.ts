@@ -7,7 +7,10 @@ import { TranslateService } from '@ngx-translate/core';
 import { DatePipe, CurrencyPipe } from '@angular/common';
 import es from '@angular/common/locales/es';
 import { registerLocaleData, TitleCasePipe} from '@angular/common';
+import 'jspdf-autotable';
 registerLocaleData(es);
+
+declare var html2canvas: any;
 
 @Injectable()
 export class PDFService {
@@ -17,7 +20,9 @@ export class PDFService {
         billing : "Cuenta de cobro",
         to : "Debe a",
         amountTitle : "La suma de",
-        conceptsTitle : "Por concepto de"
+        conceptsTitle : "Por concepto de",
+        totalValue : "Valor total",
+        concepts : "Conceptos"
     };
 
     constructor(private commonService : CommonService, private translateService : TranslateService) {
@@ -26,7 +31,9 @@ export class PDFService {
             "pdfFile.to",
             "common.billing",
             "pdfFile.amountTitle",
-            "pdfFile.conceptsTitle"
+            "pdfFile.conceptsTitle",
+            "pdfFile.totalValue",
+            "pdfFile.concepts"
         ])
         .subscribe(response => {
             this.titles.tin = response['common.tin'];
@@ -106,8 +113,7 @@ export class PDFService {
 
         //Total Value
         doc.setFontType("bold");
-        let currency = new CurrencyPipe('es');
-        let price = (concepts) ? "(" + currency.transform(concepts.Total) + ")" : "";
+        let price = (concepts) ? "($" + concepts.Total.toLocaleString("es-CO") + ")" : "";
         textWidth = doc.getStringUnitWidth(price) * doc.internal.getFontSize() / doc.internal.scaleFactor;
         doc.text(price, ((pageWidth - textWidth) / 2), 128);
 
@@ -118,6 +124,20 @@ export class PDFService {
         doc.text(conceptsTitle, ((pageWidth - textWidth) / 2), 146);
 
         //list of concepts
+
+        let conceptNames = (concepts) ? concepts.Concepts.map(x => x.Name) : [];
+        let conceptPrices = (concepts) ? concepts.Concepts.map(x => x.Price) : [];
+
+        doc.autoTable({
+            head: [[this.titles.concepts, this.titles.totalValue]],
+            body: [[conceptNames, conceptPrices]],
+            startY : 153,
+            headStyles: {fillColor: [255, 255, 255], textColor : 0},
+            styles: {
+                lineColor: [0, 0, 0],
+                lineWidth: 0.2
+            },
+        });
 
         //description
 
