@@ -17,11 +17,11 @@
           <div [formGroupName]="i" *ngFor="let control of productForm.controls['formArray'].controls; let i = index">
               
             <mat-form-field class="product-width">
-                <input formControlName="dynamicName" matInput autocomplete="off" placeholder="{{'common.name' | translate}}">
+                <input formControlName="Name" matInput autocomplete="off" placeholder="{{'common.name' | translate}}">
               </mat-form-field>
           
               <mat-form-field class="price-width price-input">
-                <input formControlName="dynamicPrice" type="number" matInput autocomplete="off" placeholder="{{'common.price' | translate}}">
+                <input formControlName="Price" type="number" matInput autocomplete="off" placeholder="{{'common.price' | translate}}">
               </mat-form-field>
   
               <button mat-raised-button color="primary" type="button" (click)="deleteInput(i)">{{'common.delete' | translate}}</button>

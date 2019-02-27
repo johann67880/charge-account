@@ -38,11 +38,26 @@ export class ProductDetailComponent implements OnInit {
     this.productForm.valueChanges.subscribe( data => {
 
       this.totalConcepts = (this.productForm.controls.defaultPrice.value) ? parseFloat(this.productForm.controls.defaultPrice.value) : 0;
-      this.countConcepts = (this.productForm.controls.defaultName.value) ? 1 : 0;
+      this.countConcepts = (this.productForm.controls.defaultName.value && this.productForm.controls.defaultPrice.value) ? 1 : 0;
 
-      let validConcepts = this.productForm.controls.formArray.value.filter(x => x.dynamicName !== "" && x.dynamicPrice !== "");
-      this.totalConcepts += validConcepts.reduce((sum, current) => sum + parseFloat(current.dynamicPrice), 0);
-      this.countConcepts += (validConcepts) ? validConcepts.length : 0;
+      let validConcepts = [];
+      
+      if(this.productForm.controls.defaultName.value && this.productForm.controls.defaultPrice.value) { 
+        validConcepts.push({Name: this.productForm.controls.defaultName.value, Price : this.productForm.controls.defaultPrice.value});
+      }
+
+      let dynamicConcepts = this.productForm.controls.formArray.value.filter(x => x.Name !== "" && x.Price !== "");
+      
+      if(dynamicConcepts.length > 0) {
+        
+        for(let item of dynamicConcepts) {
+          validConcepts.push({Name : item.Name, Price : item.Price});
+        }
+
+        this.totalConcepts = validConcepts.reduce((sum, current) => sum + parseFloat(current.Price), 0);
+        this.countConcepts = (validConcepts) ? validConcepts.length : 0;
+      }
+
       this.totalConceptsText = this.writtenNumber(this.totalConcepts) + " " + this.translateService.instant("common.coinName");
 
       this.conceptsModel.Concepts = validConcepts;
@@ -58,8 +73,8 @@ export class ProductDetailComponent implements OnInit {
     const arrayControl = <FormArray>this.productForm.controls['formArray'];
     
     let newGroup = this.fb.group({
-      dynamicName: ['', [Validators.required]],
-      dynamicPrice: ['', [Validators.required]]
+      Name: ['', [Validators.required]],
+      Price: ['', [Validators.required]]
     });
 
     arrayControl.push(newGroup);

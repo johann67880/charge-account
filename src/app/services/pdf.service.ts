@@ -4,7 +4,7 @@ import { CompanyStepModel } from '../models/companyStep.model';
 import { ProductDetailStepModel } from '../models/productDetailStep.model';
 import { CommonService } from './common-service.service';
 import { TranslateService } from '@ngx-translate/core';
-import { DatePipe, CurrencyPipe } from '@angular/common';
+import { DatePipe, DecimalPipe } from '@angular/common';
 import es from '@angular/common/locales/es';
 import { registerLocaleData, TitleCasePipe} from '@angular/common';
 import 'jspdf-autotable';
@@ -22,7 +22,8 @@ export class PDFService {
         amountTitle : "La suma de",
         conceptsTitle : "Por concepto de",
         totalValue : "Valor total",
-        concepts : "Conceptos"
+        concepts : "Conceptos",
+        total : "Total"
     };
 
     constructor(private commonService : CommonService, private translateService : TranslateService) {
@@ -124,19 +125,27 @@ export class PDFService {
         doc.text(conceptsTitle, ((pageWidth - textWidth) / 2), 146);
 
         //list of concepts
-
-        let conceptNames = (concepts) ? concepts.Concepts.map(x => x.Name) : [];
-        let conceptPrices = (concepts) ? concepts.Concepts.map(x => x.Price) : [];
+        let decimalPipe = new DecimalPipe('es');
+        let sumTotal = (concepts) ? decimalPipe.transform(concepts.Concepts.reduce((sum, current) => sum + current.Price, 0)) : 0;
 
         doc.autoTable({
             head: [[this.titles.concepts, this.titles.totalValue]],
-            body: [[conceptNames, conceptPrices]],
+            body: this.bodyRows(concepts),
+            foot : [[this.titles.total, sumTotal]],
             startY : 153,
             headStyles: {fillColor: [255, 255, 255], textColor : 0},
             styles: {
                 lineColor: [0, 0, 0],
-                lineWidth: 0.2
+                lineWidth: 0.2,
+                textColor : 0,
+                cellWidth: 'auto'
             },
+            footStyles: {
+                fillColor: [255, 255, 255],
+            },
+            columnStyles: {
+                0: {cellWidth: 100}
+            }
         });
 
         //description
@@ -144,5 +153,23 @@ export class PDFService {
         //signature
 
         return doc.output('blob');
+    }
+
+    private bodyRows(list : ProductDetailStepModel) {
+
+        let body = [];
+
+        if(!list) {
+            return body;
+        }
+
+        let decimalPipe = new DecimalPipe('es');
+        this.titles.concepts;
+
+        for (let item of list.Concepts) {
+            body.push([item.Name, decimalPipe.transform(item.Price)]);
+        }
+
+        return body;
     }
 }
