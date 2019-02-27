@@ -29,7 +29,7 @@ export class PDFService {
             "pdfFile.conceptsTitle"
         ])
         .subscribe(response => {
-            this.titles.tin = response['pdfFile.tin'];
+            this.titles.tin = response['common.tin'];
             this.titles.amountTitle = response['pdfFile.amountTitle'];
             this.titles.billing = response['common.billing'];
             this.titles.to = response['pdfFile.to'];
@@ -40,7 +40,8 @@ export class PDFService {
     public previewBillingPDF(company : CompanyStepModel, concepts : ProductDetailStepModel) : any {
         
         var doc = jsPDF();
-        doc.setFontSize(13);
+        doc.setFontType("bold");
+        doc.setFontSize(11);
         var pageHeight = doc.internal.pageSize.height || doc.internal.pageSize.getHeight();
         var pageWidth = doc.internal.pageSize.width || doc.internal.pageSize.getWidth();
 
@@ -48,63 +49,73 @@ export class PDFService {
         let titleCase = new TitleCasePipe();
         let billingId = this.commonService.getBillingId() ? this.commonService.getBillingId() : "000";
 
-        let title = this.titles.billing + " #" + billingId;
+        let title = this.titles.billing.toUpperCase() + " #" + billingId;
         var textWidth = doc.getStringUnitWidth(title) * doc.internal.getFontSize() / doc.internal.scaleFactor;
-        doc.text(title, ((pageWidth - textWidth) / 2), 35);
+        doc.text(title, ((pageWidth - textWidth) / 2), 25);
 
         //date
         let date = new DatePipe('es');
         let billingDate = titleCase.transform(date.transform(Date.now(), "MMMM yyyy"));
         textWidth = doc.getStringUnitWidth(billingDate) * doc.internal.getFontSize() / doc.internal.scaleFactor;
-        doc.text(billingDate, ((pageWidth - textWidth) / 2), 45);
+        doc.text(billingDate, ((pageWidth - textWidth) / 2), 32);
 
-
-        let tinCompany = (company) ? company.selectedCompany.Tin : "";
-        let tinText = this.titles.tin + ": " + tinCompany;
-        textWidth = doc.getStringUnitWidth(tinText) * doc.internal.getFontSize() / doc.internal.scaleFactor;
-        doc.text(tinText, ((pageWidth - textWidth) / 2), 55);
-
-        let companyName = (company) ? company.selectedCompany.Name : "";
+        //Company Name
+        let companyName = (company) ? company.selectedCompany.Name.toUpperCase() : "";
         textWidth = doc.getStringUnitWidth(companyName) * doc.internal.getFontSize() / doc.internal.scaleFactor;
-        doc.text(companyName, ((pageWidth - textWidth) / 2), 65);
+        doc.text(companyName, ((pageWidth - textWidth) / 2), 50);
 
-        let companyContactName = (company) ? company.selectedCompany.ContactName : "";
+        //TIN
+        let tinCompany = (company) ? company.selectedCompany.Tin : "";
+        let tinText = this.titles.tin.toUpperCase() + ": " + tinCompany.toUpperCase();
+        textWidth = doc.getStringUnitWidth(tinText) * doc.internal.getFontSize() / doc.internal.scaleFactor;
+        doc.text(tinText, ((pageWidth - textWidth) / 2), 57);
+
+        //Contact Name
+        let companyContactName = (company) ? titleCase.transform(company.selectedCompany.ContactName) : "";
         textWidth = doc.getStringUnitWidth(companyContactName) * doc.internal.getFontSize() / doc.internal.scaleFactor;
-        doc.text(companyContactName, ((pageWidth - textWidth) / 2), 75);
+        doc.text(companyContactName, ((pageWidth - textWidth) / 2), 64);
 
         //destination
+        doc.setFontType("normal");
         let to = this.titles.to + ":";
         textWidth = doc.getStringUnitWidth(to) * doc.internal.getFontSize() / doc.internal.scaleFactor;
-        doc.text(to, ((pageWidth - textWidth) / 2), 85);
+        doc.text(to, ((pageWidth - textWidth) / 2), 82);
 
-        let destinationTin = (company) ? company.destinationTin : "";
-        let destinationTinText = this.titles.tin + ": " + destinationTin;
+        //Destination Tin
+        doc.setFontType("bold");
+        let destinationTin = (company) ? company.destinationTin.toUpperCase() : "";
+        let destinationTinText = this.titles.tin.toUpperCase() + ": " + destinationTin;
         textWidth = doc.getStringUnitWidth(destinationTinText) * doc.internal.getFontSize() / doc.internal.scaleFactor;
-        doc.text(destinationTinText, ((pageWidth - textWidth) / 2), 95);
+        doc.text(destinationTinText, ((pageWidth - textWidth) / 2), 89);
 
+        //Destination Name
         let destinationName = (company) ? company.destinationName : "";
         textWidth = doc.getStringUnitWidth(destinationName) * doc.internal.getFontSize() / doc.internal.scaleFactor;
-        doc.text(destinationName, ((pageWidth - textWidth) / 2), 105);
+        doc.text(destinationName, ((pageWidth - textWidth) / 2), 96);
 
-        //total money
+        //Total Title
+        doc.setFontType("normal");
         let amountTitle = this.titles.amountTitle + ":";
         textWidth = doc.getStringUnitWidth(amountTitle) * doc.internal.getFontSize() / doc.internal.scaleFactor;
-        doc.text(amountTitle, ((pageWidth - textWidth) / 2), 115);
+        doc.text(amountTitle, ((pageWidth - textWidth) / 2), 114);
 
-        let totalText = (concepts) ? concepts.TotalText : "";
+        //Total Text
+        let totalText = (concepts) ? titleCase.transform(concepts.TotalText) : "";
         textWidth = doc.getStringUnitWidth(totalText) * doc.internal.getFontSize() / doc.internal.scaleFactor;
-        doc.text(totalText, ((pageWidth - textWidth) / 2), 125);
+        doc.text(totalText, ((pageWidth - textWidth) / 2), 121);
 
+        //Total Value
+        doc.setFontType("bold");
         let currency = new CurrencyPipe('es');
-
         let price = (concepts) ? "(" + currency.transform(concepts.Total) + ")" : "";
         textWidth = doc.getStringUnitWidth(price) * doc.internal.getFontSize() / doc.internal.scaleFactor;
-        doc.text(price, ((pageWidth - textWidth) / 2), 135);
+        doc.text(price, ((pageWidth - textWidth) / 2), 128);
 
-        //concepts
+        //Concepts
+        doc.setFontType("normal");
         let conceptsTitle = this.titles.conceptsTitle + ":";
         textWidth = doc.getStringUnitWidth(conceptsTitle) * doc.internal.getFontSize() / doc.internal.scaleFactor;
-        doc.text(conceptsTitle, ((pageWidth - textWidth) / 2), 145);
+        doc.text(conceptsTitle, ((pageWidth - textWidth) / 2), 146);
 
         //list of concepts
 

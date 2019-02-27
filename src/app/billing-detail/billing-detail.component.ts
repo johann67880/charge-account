@@ -21,6 +21,7 @@ export class BillingDetailComponent implements OnInit {
   dateFormat : string;
   companies : Company[];
   selectedCompany : Company;
+  companyModel : CompanyStepModel = new CompanyStepModel();
   
   constructor(private translateService : TranslateService, private billingDetailService : BillingDetailService, 
     private companyService : CompanyService, private formBuilder : FormBuilder, private commonService : CommonService) {
@@ -49,19 +50,45 @@ export class BillingDetailComponent implements OnInit {
     this.getBillingNumber();
 
     this.getCompanies();
+
+    this.billingForm.valueChanges.subscribe(data => {
+      //set selected company to be obtained from other siblings components
+      this.companyModel.selectedCompany = this.selectedCompany;
+      this.companyModel.destinationName =  this.billingForm.controls.destinationName.value;
+      this.companyModel.destinationTin = this.billingForm.controls.destinationTin.value;
+
+      this.commonService.setSelectedCompany(this.companyModel);
+    });
   }
 
   getBillingNumber() {
+    
+    /*
     this.billingDetailService.getBillingNumber().subscribe(result => {
       this.billingNumber = result.Id;
       this.commonService.setBillingId(this.billingNumber);
     });
+    */
+
+    ////TODO : remove this line where exists real API
+    this.billingNumber = "12345";
+    this.commonService.setBillingId(this.billingNumber);
   }
 
   getCompanies() {
+
+    /*
     this.companyService.getAll().subscribe(result => {
       this.companies = result;
     });
+    */
+
+    ////TODO : Remove mock data
+
+    this.companies = [
+      {Id: "1", Email : "test@test.com", Address : "Calle 54", Tin : "8909006541", Cellphone : "3128145199", ContactName : "Carolina", ContactPosition : "Auxiliar", Telephone : "123 45 67", Name : "IMBOCAR"},
+      {Id: "2", Email : "test2@test.com", Address : "Calle 45", Tin : "123456789", Cellphone : "3115269841", ContactName : "Beto", ContactPosition : "CEO", Telephone : "452 69 87", Name : "ENVIA"}
+    ];
   }
 
   getSelectedCompany(event : any) {
@@ -69,13 +96,5 @@ export class BillingDetailComponent implements OnInit {
     this.billingForm.controls.companyName.setValue(this.selectedCompany.Name);
     this.billingForm.controls.companyTin.setValue(this.selectedCompany.Tin);
     this.billingForm.controls.contactName.setValue(this.selectedCompany.ContactName);
-
-    //set selected company to be obtained from other siblings components
-    let companyModel : CompanyStepModel = new CompanyStepModel();
-    companyModel.selectedCompany = this.selectedCompany;
-    companyModel.destinationName =  this.billingForm.controls.sourceName.value;
-    companyModel.destinationTin = this.billingForm.controls.sourceTin.value;
-
-    this.commonService.setSelectedCompany(companyModel);
   }
 }

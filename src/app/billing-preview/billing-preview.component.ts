@@ -15,14 +15,6 @@ export class BillingPreviewComponent implements OnInit {
   public safeUrl: SafeHtml;
   blobFile : any;
 
-  titles = {
-    tin  : "",
-    billing : "",
-    to : "",
-    amountTitle : "",
-    conceptsTitle : ""
-  };
-
   constructor(private pdfService : PDFService, private sanitizer : DomSanitizer, private commonService : CommonService) {
     
   }

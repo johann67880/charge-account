@@ -4,7 +4,7 @@
 </mat-toolbar>
 
 <div>
-  <mat-horizontal-stepper>
+  <mat-horizontal-stepper #stepper>
 
     <mat-step [completed]="false" label="{{'common.billing' | translate}}">
       <div>
@@ -16,7 +16,9 @@
     </mat-step>
 
     <mat-step [completed]="false" label="{{'common.detailProduct' | translate}}">
-      <product-detail></product-detail>
+      <div>
+        <product-detail></product-detail>
+      </div>
       <div>
         <button mat-button class="paginator-button-space" mat-stroked-button color="primary" matStepperPrevious>{{'common.back' | translate}}</button>
         <button mat-button mat-stroked-button color="primary" matStepperNext>{{'common.next' | translate}}</button>
@@ -34,7 +36,7 @@
     </mat-step>
 
     <mat-step [completed]="false" label="{{'common.preview' | translate}}">
-      <div class="preview-container">
+      <div class="preview-container" *ngIf="stepper.selectedIndex == 3">
         <billing-preview></billing-preview>
       </div>
       <div>
