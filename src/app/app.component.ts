@@ -19,5 +19,9 @@ export class AppComponent {
     matIconRegistry.addSvgIcon('arrow-back', sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/arrow_back.svg'));
     matIconRegistry.addSvgIcon('add', sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/add.svg'));
     matIconRegistry.addSvgIcon('file', sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/file.svg'));
+    matIconRegistry.addSvgIcon('edit', sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/edit.svg'));
+    matIconRegistry.addSvgIcon('download', sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/download.svg'));
+    matIconRegistry.addSvgIcon('delete', sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/delete.svg'));
+    matIconRegistry.addSvgIcon('view', sanitizer.bypassSecurityTrustResourceUrl('../assets/icons/view.svg'));
   }
 }

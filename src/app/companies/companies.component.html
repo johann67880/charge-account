@@ -36,8 +36,29 @@
                 <td mat-cell *matCellDef="let row"> {{row.Address}} </td>
             </ng-container>
 
+            <ng-container matColumnDef="Buttons">
+                <th mat-header-cell style="display: none" *matHeaderCellDef> </th>
+                <td mat-cell *matCellDef="let row; let i = index;" attr.id="button{{i}}">
+                  <div class="mat-row-buttons" fxLayout="row" fxLayoutAlign="start center">
+                    <button mat-icon-button
+                      (click)="selectItem(row); showDetail(row); $event.stopPropagation()" [matTooltipPosition]="'above'"
+                      [matTooltipClass]="'tooltip-cell'" [matTooltip]="'Detalles'">
+                      <mat-icon svgIcon="view"></mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="selectItem(row); edit(row); $event.stopPropagation()"
+                      [matTooltipPosition]="'above'" [matTooltipClass]="'tooltip-cell'" [matTooltip]="'Editar'">
+                      <mat-icon svgIcon="edit"></mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="selectItem(row); confirmDelete(row); $event.stopPropagation()"
+                      [matTooltipPosition]="'above'" [matTooltipClass]="'tooltip-cell'" [matTooltip]="'Eliminar'">
+                      <mat-icon svgIcon="delete"></mat-icon>
+                    </button>
+                  </div>
+                </td>
+              </ng-container>
+
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            <tr (mouseenter)="mouseEnter('button'+i)" mat-row *matRowDef="let row; columns: displayedColumns; let i = index;"></tr>
         </table>
 
         <div>

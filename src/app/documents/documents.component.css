@@ -6,3 +6,32 @@ table {
     vertical-align: super;
     padding-left: 10px;
 }
+
+tr:not(:hover)>td:nth-last-child(1) {
+    display: none;
+}
+
+tr:hover>td:nth-last-child(1) {
+    position: absolute;
+    border: none;
+    margin-top: 2px;
+    background-color: #FFFFFF;
+    padding: 0 25px !important;
+}
+
+tr.mat-row:hover>td.mat-cell:not(:nth-last-child(1)) {
+    border-bottom: 1px #0B72b5 solid;
+    border-top: 1px #0B72b5 solid;
+}
+
+.mat-row-buttons {
+    position: relative;
+    width: 10%;
+    height: 10%;
+    left: 0;
+    top: 0;             
+}
+
+.mat-row {        
+    position: relative;
+}

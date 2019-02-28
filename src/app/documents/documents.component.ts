@@ -16,7 +16,8 @@ export class DocumentsComponent implements OnInit {
     'Select',
     'Name',
     'Size',
-    'UploadDate'
+    'UploadDate',
+    'Buttons'
   ];
 
   selection = new SelectionModel<UserDocument>(true, []);
@@ -57,6 +58,27 @@ export class DocumentsComponent implements OnInit {
       this.documents.paginator = this.paginator;
       this.paginatorLength = data.length;
     });
+  }
+
+  selectItem(row : any) {
+
+  }
+
+  showDetail(row : any) {
+    
+  }
+
+  edit(row : any) {
+    
+  }
+
+  confirmDelete(row : any) {
+
+  }
+
+  mouseEnter(e : any) {
+    const obj = document.getElementById(e);
+    obj.style.right = "30px";
   }
 
 }
