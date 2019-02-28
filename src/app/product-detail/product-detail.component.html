@@ -1,4 +1,4 @@
-<form [formGroup]="productForm" (ngSubmit)="onSubmit()" novalidate>
+<form [formGroup]="productForm" novalidate>
 
   <div fxLayout="row" class="main-container ">
     <div fxFlex="60" fxLayoutAlign="start center">
@@ -14,7 +14,7 @@
         </mat-form-field>
 
         <div formArrayName="formArray">
-          <div [formGroupName]="i" *ngFor="let control of productForm.controls['formArray'].controls; let i = index">
+          <div [formGroupName]="i" *ngFor="let control of productForm['controls'].formArray['controls']; let i = index">
               
             <mat-form-field class="product-width">
                 <input formControlName="Name" matInput autocomplete="off" placeholder="{{'common.name' | translate}}">

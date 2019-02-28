@@ -4,11 +4,11 @@ import { ProductDetailStepModel } from '../models/productDetailStep.model';
 
 @Injectable()
 export class CommonService {
-  private selectedTab : number = 0;
+  public selectedTab : number = 0;
   
-  private companyStepModel : CompanyStepModel;
-  private conceptsModel : ProductDetailStepModel;
-  private billingId : string;
+  public companyStepModel : CompanyStepModel;
+  public conceptsModel : ProductDetailStepModel;
+  public billingId : string;
 
 
   getSelectedTab() {

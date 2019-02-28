@@ -9,7 +9,7 @@ import { CommonService } from '../services/common-service.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private commonService : CommonService) {
+  constructor(public commonService : CommonService) {
   }
 
   ngOnInit() {
