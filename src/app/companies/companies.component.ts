@@ -51,12 +51,16 @@ export class CompaniesComponent implements OnInit, AfterViewInit  {
       this.paginatorLength = data.length;
     });
     */
+   
      let data = [
       {Id: "1", Email : "test@test.com", Address : "C", Tin : "8909006541", Cellphone : "3128145199", ContactName : "Carolina", ContactPosition : "Auxiliar", Telephone : "123 45 67", Name : "IMBOCAR"},
       {Id: "2", Email : "test2@test.com", Address : "C5", Tin : "123456789", Cellphone : "3115269841", ContactName : "Beto", ContactPosition : "CEO", Telephone : "452 69 87", Name : "ENVIA"}
     ];
 
     this.companies = new MatTableDataSource(data);
+    this.companies.sort = this.sort;
+    this.companies.paginator = this.paginator;
+    this.paginatorLength = data.length;
   }
 
   selectItem(row : any) {

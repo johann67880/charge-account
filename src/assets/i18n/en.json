@@ -36,7 +36,8 @@
         "totalConcepts" : "Total concepts",
         "countConcepts" : "Number of conceptos",
         "totalInText" : "Total in text",
-        "coinName" : "USD"
+        "coinName" : "USD",
+        "totalValue" : "Total value"
     },
     "billing" : {
         "createBilling" : "Crear cuenta de cobro",
@@ -44,7 +45,8 @@
         "editBilling" : "Editar cuenta de cobro",
         "number" : "Billing number",
         "date" : "Billing date",
-        "dateFormat" : "MM/dd/yyyy"
+        "dateFormat" : "MM/dd/yyyy",
+        "dateTitle" : "Creation date"
     },
     "company" : {
         "createCompany" : "Create company",
