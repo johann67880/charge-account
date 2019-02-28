@@ -7,7 +7,7 @@
   <mat-horizontal-stepper #stepper>
 
     <mat-step [completed]="false" label="{{'common.billing' | translate}}">
-      <div>
+      <div class="billing-container">
         <billing-detail></billing-detail>
       </div>
       <div>
@@ -16,7 +16,7 @@
     </mat-step>
 
     <mat-step [completed]="false" label="{{'common.detailProduct' | translate}}">
-      <div>
+      <div class="product-detail-container">
         <product-detail></product-detail>
       </div>
       <div>

@@ -14,8 +14,10 @@ table {
     width: 100%;
 }
 
-.table-container {
+.main-container {
     padding-top: 20px;
+    margin: auto;
+    width: 95%;
 }
 
 tr:not(:hover)>td:nth-last-child(1) {
@@ -45,4 +47,8 @@ tr.mat-row:hover>td.mat-cell:not(:nth-last-child(1)) {
 
 .mat-row {        
     position: relative;
+}
+
+.bottom-space {
+    padding-bottom: 20px;
 }

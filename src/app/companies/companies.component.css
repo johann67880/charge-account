@@ -3,7 +3,8 @@ table {
 }
 
 .create-button-container {
-    padding-bottom: 15px;
+    padding-bottom: 20px;
+    padding-top: 20px;
 }
 
 .uppercase-text {
@@ -37,4 +38,9 @@ tr.mat-row:hover>td.mat-cell:not(:nth-last-child(1)) {
 
 .mat-row {        
     position: relative;
+}
+
+.main-container {
+    margin: auto;
+    width: 95%;
 }

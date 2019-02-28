@@ -78,7 +78,7 @@ export class DocumentsComponent implements OnInit {
 
   mouseEnter(e : any) {
     const obj = document.getElementById(e);
-    obj.style.right = "30px";
+    obj.style.right = "50px";
   }
 
 }

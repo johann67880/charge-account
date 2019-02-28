@@ -1,5 +1,6 @@
 .create-billing-container {
-    padding-top: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .space-button-text {
@@ -16,8 +17,10 @@
 
 .company-container {
     padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .document-container {
     padding-top: 20px;
+    padding-bottom: 20px;
 }

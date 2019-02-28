@@ -81,7 +81,7 @@ export class CompaniesComponent implements OnInit, AfterViewInit  {
 
   mouseEnter(e : any) {
     const obj = document.getElementById(e);
-    obj.style.right = "30px";
+    obj.style.right = "50px";
   }
 
 }
