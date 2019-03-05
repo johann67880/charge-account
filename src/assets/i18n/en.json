@@ -37,7 +37,8 @@
         "countConcepts" : "Number of conceptos",
         "totalInText" : "Total in text",
         "coinName" : "USD",
-        "totalValue" : "Total value"
+        "totalValue" : "Total value",
+        "dropFiles" : "Drag or click here to select the files you want to upload"
     },
     "billing" : {
         "createBilling" : "Crear cuenta de cobro",
@@ -65,5 +66,11 @@
         "conceptsTitle" : "Concepts",
         "concepts" : "Concepts",
         "totalValue" : "Total value"
+    },
+    "confirmDialog" : {
+        "title" : "Please confirm",
+        "description" : "Are you sure you want to delete this item?",
+        "okButton" : "Ok",
+        "cancelButton" : "Cancel"
     }
 }

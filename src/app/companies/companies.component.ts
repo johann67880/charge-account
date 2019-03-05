@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatSort, MatDialog } from '@angular/material';
 import { Company } from '../models/company.model';
 import { CompanyService } from './company.service';
+import { ConfirmationDialogComponent } from '../common/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'companies',
@@ -27,7 +28,7 @@ export class CompaniesComponent implements OnInit, AfterViewInit  {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private service : CompanyService) { }
+  constructor(private service : CompanyService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getCompanies();
@@ -76,7 +77,13 @@ export class CompaniesComponent implements OnInit, AfterViewInit  {
   }
 
   confirmDelete(row : any) {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '350px'
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
   mouseEnter(e : any) {

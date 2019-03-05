@@ -37,7 +37,8 @@
         "countConcepts" : "Número de conceptos",
         "totalInText" : "Total en letras",
         "coinName" : "Pesos",
-        "totalValue" : "Valor total"
+        "totalValue" : "Valor total",
+        "dropFiles" : "Arrastra o clic aquí para seleccionar los documentos que desear subir"
     },
     "billing" : {
         "createBilling" : "Crear cuenta de cobro",
@@ -65,5 +66,11 @@
         "conceptsTitle" : "Por concepto de",
         "concepts" : "Conceptos",
         "totalValue" : "Valor total"
+    },
+    "confirmDialog" : {
+        "title" : "Por favor confirme",
+        "description" : "¿Está seguro que desea eliminar este elemento?",
+        "okButton" : "Ok",
+        "cancelButton" : "Cancelar"
     }
 }

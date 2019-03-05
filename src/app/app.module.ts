@@ -20,6 +20,9 @@ import { CompanyDetailComponent } from './company-detail/company-detail.componen
 import { CommonService } from './services/common-service.service';
 import { BillingDetailComponent } from './billing-detail/billing-detail.component';
 
+import { FileUploadModule } from 'ng2-file-upload';
+import { ConfirmationDialogComponent } from './common/confirmation-dialog/confirmation-dialog.component';
+
 export function createTranslateLoader(http: HttpClient) {
    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -35,7 +38,8 @@ export function createTranslateLoader(http: HttpClient) {
       BillingPreviewComponent,
       ProductDetailComponent,
       CompanyDetailComponent,
-      BillingDetailComponent
+      BillingDetailComponent,
+      ConfirmationDialogComponent
    ],
    imports: [
       BrowserModule,
@@ -44,6 +48,7 @@ export function createTranslateLoader(http: HttpClient) {
       MaterialModule,
       HttpClientModule,
       FlexLayoutModule,
+      FileUploadModule,
       TranslateModule.forRoot({
          loader: {
              provide: TranslateLoader,
@@ -52,6 +57,7 @@ export function createTranslateLoader(http: HttpClient) {
          }
      })
    ],
+   entryComponents : [ConfirmationDialogComponent],
    providers: [
       { provide: 'BASE_URL', useFactory: getBaseUrl },
       CommonService

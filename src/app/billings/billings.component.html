@@ -2,7 +2,7 @@
 
   <div class="main-container">
     <div class="bottom-space">
-      <button mat-raised-button color="primary" routerLink="/steps">
+      <button mat-raised-button color="primary" (click)="createBilling()">
         <span class="space-button-text uppercase-text">{{"billing.createBilling" | translate}}</span>
         <mat-icon svgIcon="add"></mat-icon>
       </button>
@@ -29,7 +29,7 @@
           <th mat-header-cell mat-sort-header *matHeaderCellDef>{{'billing.dateTitle' | translate}}</th>
           <td mat-cell *matCellDef="let row"> {{row.CreationDate | date : dateFormat}} </td>
         </ng-container>
-
+        
         <ng-container matColumnDef="Buttons">
           <th mat-header-cell style="display: none" *matHeaderCellDef> </th>
           <td mat-cell *matCellDef="let row; let i = index;" attr.id="button{{i}}">

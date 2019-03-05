@@ -1,15 +1,18 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { MatSort, MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatSort, MatPaginator, MatTableDataSource, MatDialog } from '@angular/material';
 import { BillingsService } from './billings.service';
 import { BillingDetail } from '../models/billingDetail.model';
 import { ProductDetail } from '../models/productDetail.model';
+import { CommonService } from '../services/common-service.service';
+import { Router } from '@angular/router';
+import { ConfirmationDialogComponent } from '../common/confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'billings',
   templateUrl: './billings.component.html',
   styleUrls: ['./billings.component.css'],
-  providers :[BillingsService]
+  providers :[BillingsService, CommonService]
 })
 export class BillingsComponent implements OnInit {
 
@@ -29,7 +32,8 @@ export class BillingsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private billingService : BillingsService, private translateService : TranslateService) { 
+  constructor(private billingService : BillingsService, private translateService : TranslateService, 
+    private commonService : CommonService, private route : Router, public dialog: MatDialog) { 
     this.translateService.get([
       'billing.dateFormat'
     ]).subscribe(result => {
@@ -75,8 +79,14 @@ export class BillingsComponent implements OnInit {
 
   }
 
+  createBilling() {
+    this.commonService.setSelectedBillingId("");
+    this.route.navigate(['steps']);
+  }
+
   showDetail(row : any) {
-    
+    this.commonService.setSelectedBillingId(row.Id);
+    this.route.navigate(['steps/' + this.commonService.getSelectedBillingId()]);
   }
 
   edit(row : any) {
@@ -84,6 +94,14 @@ export class BillingsComponent implements OnInit {
   }
 
   confirmDelete(row : any) {
+
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '350px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
 
   }
 

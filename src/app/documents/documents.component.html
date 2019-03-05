@@ -1,5 +1,25 @@
 <div>
   <div class="main-container">
+    <div class="drag-drop-container">
+        <div fxLayout="column" ng2FileDrop (onFileDrop)="onSelectFile($event)" [uploader]="uploader" 
+        [ngClass]="{'dropzone-style': hasDropZoneOver}" (fileOver)="fileOverBase($event)"
+        style="border-style: dotted;border-width: 3px;border-radius: 3px;cursor: pointer; 
+        border-color: lightsteelblue;" fxLayoutAlign="center center">
+            <div style="height: 100%; min-height: 100px; cursor: pointer;" fxLayoutAlign="center center">
+                <input type="file" multiple id="document-drop-zone"
+                  style="display: none" (change)="onSelectFile($event)" name="picture"
+                  accept="">
+                  <label for="document-drop-zone">
+                      <div style="cursor:pointer" fxLayoutAlign="center center">
+                          <div>
+                              <span>{{'common.dropFiles' | translate}}</span>
+                          </div>
+                      </div>
+                  </label>
+            </div>
+        </div>
+    </div>
+
     <div class="mat-elevation-z8">
       <div>
         <mat-progress-bar *ngIf="isBusy" mode="indeterminate"></mat-progress-bar>

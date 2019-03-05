@@ -40,3 +40,12 @@ tr.mat-row:hover>td.mat-cell:not(:nth-last-child(1)) {
     margin: auto;
     width: 95%;
 }
+
+.dropzone-style {
+    border: dotted 3px dodgerblue !important;
+}
+
+.drag-drop-container {
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
