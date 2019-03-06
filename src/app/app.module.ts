@@ -7,6 +7,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import {FlexLayoutModule} from "@angular/flex-layout";
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -22,6 +23,7 @@ import { BillingDetailComponent } from './billing-detail/billing-detail.componen
 
 import { FileUploadModule } from 'ng2-file-upload';
 import { ConfirmationDialogComponent } from './common/confirmation-dialog/confirmation-dialog.component';
+import { DocumentDetailComponent } from './document-detail/document-detail.component';
 
 export function createTranslateLoader(http: HttpClient) {
    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -39,7 +41,8 @@ export function createTranslateLoader(http: HttpClient) {
       ProductDetailComponent,
       CompanyDetailComponent,
       BillingDetailComponent,
-      ConfirmationDialogComponent
+      ConfirmationDialogComponent,
+      DocumentDetailComponent
    ],
    imports: [
       BrowserModule,
@@ -49,6 +52,7 @@ export function createTranslateLoader(http: HttpClient) {
       HttpClientModule,
       FlexLayoutModule,
       FileUploadModule,
+      FormsModule,
       TranslateModule.forRoot({
          loader: {
              provide: TranslateLoader,
@@ -57,7 +61,7 @@ export function createTranslateLoader(http: HttpClient) {
          }
      })
    ],
-   entryComponents : [ConfirmationDialogComponent],
+   entryComponents : [ConfirmationDialogComponent, DocumentDetailComponent],
    providers: [
       { provide: 'BASE_URL', useFactory: getBaseUrl },
       CommonService

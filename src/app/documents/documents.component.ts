@@ -3,8 +3,9 @@ import { MatTableDataSource, MatPaginator, MatSort, MatDialog } from '@angular/m
 import {SelectionModel} from '@angular/cdk/collections';
 import { UserDocument } from '../models/document.model';
 import { DocumentService } from './documents.service';
-import { FileSelectDirective, FileDropDirective, FileUploader } from 'ng2-file-upload/ng2-file-upload';
+import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { ConfirmationDialogComponent } from '../common/confirmation-dialog/confirmation-dialog.component';
+import { DocumentDetailComponent } from '../document-detail/document-detail.component';
 
 @Component({
   selector: 'documents',
@@ -111,7 +112,16 @@ export class DocumentsComponent implements OnInit {
   }
 
   edit(row : any) {
-    
+    const dialogRef = this.dialog.open(DocumentDetailComponent, {
+      width: '350px',
+      data: row
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed : ');
+
+      ////TODO : refresh documents
+    });
   }
 
   confirmDelete(row : any) {

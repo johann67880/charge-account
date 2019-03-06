@@ -38,7 +38,9 @@
         "totalInText" : "Total en letras",
         "coinName" : "Pesos",
         "totalValue" : "Valor total",
-        "dropFiles" : "Arrastra o clic aquí para seleccionar los documentos que desear subir"
+        "dropFiles" : "Arrastra o clic aquí para seleccionar los documentos que desear subir",
+        "editDocument" : "Editar nombre de documento",
+        "okButton" : "Ok"
     },
     "billing" : {
         "createBilling" : "Crear cuenta de cobro",

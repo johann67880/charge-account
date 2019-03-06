@@ -38,7 +38,8 @@
         "totalInText" : "Total in text",
         "coinName" : "USD",
         "totalValue" : "Total value",
-        "dropFiles" : "Drag or click here to select the files you want to upload"
+        "dropFiles" : "Drag or click here to select the files you want to upload",
+        "editDocument" : "Editar nombre de documento"
     },
     "billing" : {
         "createBilling" : "Crear cuenta de cobro",

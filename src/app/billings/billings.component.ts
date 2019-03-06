@@ -86,7 +86,7 @@ export class BillingsComponent implements OnInit {
 
   showDetail(row : any) {
     this.commonService.setSelectedBillingId(row.Id);
-    this.route.navigate(['steps/' + this.commonService.getSelectedBillingId()]);
+    this.route.navigate(['steps']);
   }
 
   edit(row : any) {

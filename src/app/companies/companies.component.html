@@ -1,7 +1,7 @@
 <div>
     <div class="main-container">
         <div class="create-button-container">
-            <button mat-raised-button color="primary" routerLink="/companies-detail">
+            <button mat-raised-button color="primary" (click)="createCompany()">
                 <span class="space-button-text uppercase-text">{{"company.createCompany" | translate}}</span>
                 <mat-icon svgIcon="add"></mat-icon>
             </button>
@@ -44,12 +44,8 @@
                     <div class="mat-row-buttons" fxLayout="row" fxLayoutAlign="start center">
                         <button mat-icon-button
                         (click)="selectItem(row); showDetail(row); $event.stopPropagation()" [matTooltipPosition]="'above'"
-                        [matTooltipClass]="'tooltip-cell'" [matTooltip]="'Detalles'">
+                        [matTooltipClass]="'tooltip-cell'" [matTooltip]="'Ver / Editar'">
                         <mat-icon svgIcon="view"></mat-icon>
-                        </button>
-                        <button mat-icon-button (click)="selectItem(row); edit(row); $event.stopPropagation()"
-                        [matTooltipPosition]="'above'" [matTooltipClass]="'tooltip-cell'" [matTooltip]="'Editar'">
-                        <mat-icon svgIcon="edit"></mat-icon>
                         </button>
                         <button mat-icon-button (click)="selectItem(row); confirmDelete(row); $event.stopPropagation()"
                         [matTooltipPosition]="'above'" [matTooltipClass]="'tooltip-cell'" [matTooltip]="'Eliminar'">

@@ -14,8 +14,7 @@ const routes: Routes = [
     { path: "companies-detail", component: CompanyDetailComponent, data: { title: "Companies Detail" } },
     { path: "documents", component: DocumentsComponent, data: { title: "Documents" } },
     { path: "billings", component: BillingsComponent, data: { title: "Billings" } },
-    { path: "steps/:billingId", component: StepsComponent, data: { title: "Billings Detail" } },
-    { path: "steps", redirectTo : "steps/", pathMatch : 'full' }
+    { path: "steps", component: StepsComponent, data: { title: "Billings Detail" } },
   ];
   
   

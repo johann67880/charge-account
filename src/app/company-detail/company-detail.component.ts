@@ -48,6 +48,10 @@ export class CompanyDetailComponent implements OnInit {
       cellPhoneNumber: ['', [Validators.required]],
       selectDocument : ['', Validators.required]
     });
+
+    if(this.commonService.getSelectedCompanyId() !== "") {
+      ////TODO: Consume API to retrieve an specific company or pass company object and fill the fields
+    }
   }
 
   goBack() : void {

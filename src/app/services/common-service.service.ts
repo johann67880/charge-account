@@ -10,6 +10,15 @@ export class CommonService {
   public conceptsModel : ProductDetailStepModel;
   public billingId : string;
   public selectedBillingId : string;
+  public selectedCompanyId : string;
+
+  getSelectedCompanyId() {
+    return this.selectedCompanyId;
+  }
+
+  setSelectedCompanyId(value : string) {
+    this.selectedCompanyId = value;
+  }
 
   getSelectedBillingId() {
     return this.selectedBillingId;

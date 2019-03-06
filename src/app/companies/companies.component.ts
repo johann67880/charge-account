@@ -3,6 +3,8 @@ import { MatTableDataSource, MatPaginator, MatSort, MatDialog } from '@angular/m
 import { Company } from '../models/company.model';
 import { CompanyService } from './company.service';
 import { ConfirmationDialogComponent } from '../common/confirmation-dialog/confirmation-dialog.component';
+import { Router } from '@angular/router';
+import { CommonService } from '../services/common-service.service';
 
 @Component({
   selector: 'companies',
@@ -28,7 +30,8 @@ export class CompaniesComponent implements OnInit, AfterViewInit  {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private service : CompanyService, public dialog: MatDialog) { }
+  constructor(private service : CompanyService, public dialog: MatDialog, 
+    private route : Router, private commonService : CommonService) { }
 
   ngOnInit() {
     this.getCompanies();
@@ -54,8 +57,8 @@ export class CompaniesComponent implements OnInit, AfterViewInit  {
     */
    
      let data = [
-      {Id: "1", Email : "test@test.com", Address : "C", Tin : "8909006541", Cellphone : "3128145199", ContactName : "Carolina", ContactPosition : "Auxiliar", Telephone : "123 45 67", Name : "IMBOCAR"},
-      {Id: "2", Email : "test2@test.com", Address : "C5", Tin : "123456789", Cellphone : "3115269841", ContactName : "Beto", ContactPosition : "CEO", Telephone : "452 69 87", Name : "ENVIA"}
+      {Id: "1", Email : "test@test.com", Address : "Calle 43 # 32 BB Medellín Antioquia", Tin : "8909006541", Cellphone : "3128145199", ContactName : "Carolina", ContactPosition : "Auxiliar", Telephone : "123 45 67", Name : "IMBOCAR"},
+      {Id: "2", Email : "test2@test.com", Address : "Carrera 12 A # 15 B 47", Tin : "123456789", Cellphone : "3115269841", ContactName : "Omar de Jesus Gaviria Moreno", ContactPosition : "Director de Logistica", Telephone : "452 69 87", Name : "Empresa de motores y repuestos"}
     ];
 
     this.companies = new MatTableDataSource(data);
@@ -68,12 +71,13 @@ export class CompaniesComponent implements OnInit, AfterViewInit  {
 
   }
 
-  showDetail(row : any) {
-    
+  createCompany() {
+    this.commonService.setSelectedCompanyId("");
   }
 
-  edit(row : any) {
-    
+  showDetail(row : any) {
+    this.commonService.setSelectedCompanyId(row.Id);
+    this.route.navigate(['companies-detail']);
   }
 
   confirmDelete(row : any) {

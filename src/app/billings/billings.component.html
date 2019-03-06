@@ -36,12 +36,8 @@
             <div class="mat-row-buttons" fxLayout="row" fxLayoutAlign="start center">
               <button mat-icon-button
                 (click)="selectItem(row); showDetail(row); $event.stopPropagation()" [matTooltipPosition]="'above'"
-                [matTooltipClass]="'tooltip-cell'" [matTooltip]="'Detalles'">
+                [matTooltipClass]="'tooltip-cell'" [matTooltip]="'Ver / Editar'">
                 <mat-icon svgIcon="view"></mat-icon>
-              </button>
-              <button mat-icon-button (click)="selectItem(row); edit(row); $event.stopPropagation()"
-                [matTooltipPosition]="'above'" [matTooltipClass]="'tooltip-cell'" [matTooltip]="'Editar'">
-                <mat-icon svgIcon="edit"></mat-icon>
               </button>
               <button mat-icon-button (click)="selectItem(row); confirmDelete(row); $event.stopPropagation()"
                 [matTooltipPosition]="'above'" [matTooltipClass]="'tooltip-cell'" [matTooltip]="'Eliminar'">

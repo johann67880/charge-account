@@ -36,7 +36,7 @@ export class BillingDetailComponent implements OnInit {
   ngOnInit() {
     this.billingForm = this.formBuilder.group({
       selectCompany : ['', Validators.required],
-      companyName : ['', Validators.required, {value: 'Nancy', disabled: true}],
+      companyName : ['', Validators.required],
       companyTin : ['', Validators.required],
       contactName : ['', Validators.required],
       destinationName : ['', Validators.required],
@@ -59,6 +59,10 @@ export class BillingDetailComponent implements OnInit {
 
       this.commonService.setSelectedCompany(this.companyModel);
     });
+
+    if(this.commonService.getSelectedCompanyId() !== "") {
+      ////TODO: Consume API to retrieve the specific billing and fill the fields.
+    }
   }
 
   getBillingNumber() {
